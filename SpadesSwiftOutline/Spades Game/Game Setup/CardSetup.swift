@@ -155,20 +155,76 @@ class CardSetup : UIViewController
 		return (player1CardsArray, player2CardsArray, player3CardsArray, player4CardsArray)
 	}
 	
-	
-	func position1GoesSetup()
-	{
-		
-	}
-	
-	func position2GoesSetup()
-	{
-		
-	}
-	
-	func position3GoesSetup()
-	{
-		
-	}
+    func positionCompPlayerGoesSetup(cardNameString: String, checkSpadesBroken: Bool) -> (String, String, Bool)
+    {
+        //Variables
+        var cardSuitString = String()
+        var startingSuit = String()
+        var spadesBroken = checkSpadesBroken
+        
+        // get card suit
+        // set suit = clubs
+        if ((cardNameString.hasPrefix("Club")) != nil)
+        {
+            cardSuitString = "Club"
+            startingSuit = "Club"
+        }
+        else if ((cardNameString.hasPrefix("Diamond")) != nil)
+        {
+            cardSuitString = "Diamond"
+            startingSuit = "Club"
+        }
+        else if ((cardNameString.hasPrefix("Heart")) != nil)
+        {
+            cardSuitString = "Heart"
+            startingSuit = "Club"
+        }
+        else
+        {
+            cardSuitString = "Spade"
+            startingSuit = "Club"
+            spadesBroken = true
+        }
+        
+        return(cardSuitString, startingSuit, spadesBroken)
+    }
+    
+    func checkSpadesBroken(checkSpadesBroken: Bool, leftValue: Int, topValue: Int, rightValue: Int, bottomValue: Int) -> (Bool)
+    {
+        var spadesBroken = checkSpadesBroken
+        
+        if spadesBroken == false
+        {
+            if leftValue > 14
+            {
+                spadesBroken = true
+                print("Spades Broken")
+            }
+            else if topValue > 14
+            {
+                spadesBroken = true
+                print("Spades Broken")
+            }
+            else if rightValue > 14
+            {
+                spadesBroken = true
+                print("Spades Broken")
+            }
+            else if bottomValue > 14
+            {
+                spadesBroken = true
+                print("Spades Broken")
+            }
+            else
+            {
+                spadesBroken = false
+            }
+        }
+        else
+        {
+            spadesBroken = true
+        }
+        return(spadesBroken)
+    }
 
 }

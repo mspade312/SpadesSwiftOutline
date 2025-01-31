@@ -1314,7 +1314,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="2.5x" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gkS-1t-c6k">
-                                            <rect key="frame" x="329.5" y="17" width="32.5" height="20"/>
+                                            <rect key="frame" x="330" y="21" width="32" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1732,78 +1732,117 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade23"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="CT8-jW-smt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Irl-pV-EiJ">
                                 <rect key="frame" x="72" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade24"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="0RM-xs-hY3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIq-fz-BOk">
                                 <rect key="frame" x="128" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade25"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="DXv-G0-4W4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwx-ma-Qaz">
                                 <rect key="frame" x="184" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade26"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="MDm-Sr-Tj8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEL-P6-Uab">
                                 <rect key="frame" x="240" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade27"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="cYw-ND-Sb0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kng-x8-UIE">
                                 <rect key="frame" x="296" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade28"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="fMP-lU-IPk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-Y8-uJF">
                                 <rect key="frame" x="352" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade29"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="rwU-3p-ghs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTU-xT-aiO">
                                 <rect key="frame" x="43" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade31"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="bsc-HR-taP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rem-3t-IsN">
                                 <rect key="frame" x="98" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade32"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="iFn-PB-y9S"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ4-hU-5i5">
                                 <rect key="frame" x="155" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade33"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="i6B-kI-sVU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlN-21-fcP">
                                 <rect key="frame" x="211" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade34"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="a0d-De-hyJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baZ-s4-qGu">
                                 <rect key="frame" x="267" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Spade35"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="BSl-Ut-Qet"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CN-ch-45P">
                                 <rect key="frame" x="323" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="SpadeAD39"/>
+                                <connections>
+                                    <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="2rk-d0-0nc"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Achivement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwC-8n-Ewj">
                                 <rect key="frame" x="20" y="556" width="374" height="25"/>
