@@ -1731,7 +1731,6 @@
                                 <rect key="frame" x="15" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade23"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="CT8-jW-smt"/>
                                 </connections>
@@ -1740,7 +1739,6 @@
                                 <rect key="frame" x="72" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade24"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="0RM-xs-hY3"/>
                                 </connections>
@@ -1749,7 +1747,6 @@
                                 <rect key="frame" x="128" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade25"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="DXv-G0-4W4"/>
                                 </connections>
@@ -1758,7 +1755,6 @@
                                 <rect key="frame" x="184" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade26"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="MDm-Sr-Tj8"/>
                                 </connections>
@@ -1767,7 +1763,6 @@
                                 <rect key="frame" x="240" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade27"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="cYw-ND-Sb0"/>
                                 </connections>
@@ -1776,7 +1771,6 @@
                                 <rect key="frame" x="296" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade28"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="fMP-lU-IPk"/>
                                 </connections>
@@ -1785,7 +1779,6 @@
                                 <rect key="frame" x="352" y="663" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade29"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="rwU-3p-ghs"/>
                                 </connections>
@@ -1794,7 +1787,6 @@
                                 <rect key="frame" x="43" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade31"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="bsc-HR-taP"/>
                                 </connections>
@@ -1803,7 +1795,6 @@
                                 <rect key="frame" x="98" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade32"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="iFn-PB-y9S"/>
                                 </connections>
@@ -1812,7 +1803,6 @@
                                 <rect key="frame" x="155" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade33"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="i6B-kI-sVU"/>
                                 </connections>
@@ -1821,7 +1811,6 @@
                                 <rect key="frame" x="211" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade34"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="a0d-De-hyJ"/>
                                 </connections>
@@ -1830,7 +1819,6 @@
                                 <rect key="frame" x="267" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Spade35"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="BSl-Ut-Qet"/>
                                 </connections>
@@ -1839,7 +1827,6 @@
                                 <rect key="frame" x="323" y="739" width="54" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="SpadeAD39"/>
                                 <connections>
                                     <action selector="cardSelectedWithSender:" destination="xTx-AZ-V2j" eventType="touchDownRepeat" id="2rk-d0-0nc"/>
                                 </connections>

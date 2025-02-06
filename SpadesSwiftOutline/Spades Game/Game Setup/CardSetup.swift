@@ -93,7 +93,7 @@ class CardSetup : UIViewController
 			player3CardsArray.sort { $0.localizedStandardCompare($1) == .orderedAscending }
 			player4CardsArray.sort { $0.localizedStandardCompare($1) == .orderedAscending }
 
-			gameScreen.position4Goes()
+			//gameScreen.position4Goes()
 			
 			var prefs: UserDefaults!
 			prefs = UserDefaults.standard

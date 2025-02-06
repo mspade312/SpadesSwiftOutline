@@ -139,10 +139,10 @@ class GameScreen: UIViewController {
 	@IBOutlet weak var menuButton2: UIButton?
 	@IBOutlet weak var startNewGameButton: UIButton?
 	
-	@IBOutlet weak var leftCardPlayed: UIImageView?
-	@IBOutlet weak var topCardPlayed: UIImageView?
-	@IBOutlet weak var rightCardPlayed: UIImageView?
-	@IBOutlet weak var bottomCardPlayed: UIImageView?
+	@IBOutlet var leftCardPlayed: UIImageView?
+	@IBOutlet var topCardPlayed: UIImageView?
+	@IBOutlet var rightCardPlayed: UIImageView?
+	@IBOutlet var bottomCardPlayed: UIImageView?
 	@IBOutlet var cardPlayedCollection: [UIImageView]?
 	
 	@IBOutlet weak var player1: UIImageView?
@@ -393,10 +393,12 @@ class GameScreen: UIViewController {
 				}
 			}
 		}
+
 	}
 	
 	func position1Goes()
 	{
+        compPlayerGoing = 1
 		if leftGoingOrder == 1
 		{
 			if player1CardsArray.count == 13
@@ -458,6 +460,11 @@ class GameScreen: UIViewController {
 
 				// remove card from array
 				player1CardsArray.remove(at: 0)
+                
+                print("Card Suit Is : \(cardSuitString1)")
+                print("Starting Suit Is : \(startingSuit)")
+                print("Lowest Card Is : \(cardNameString1)")
+                print("Player 1 Card Array Count : \(player1CardsArray.count)")
 
 				// set next player to go
 				if leftGoingOrder == 4
@@ -486,6 +493,8 @@ class GameScreen: UIViewController {
 	
 	func position2Goes()
 	{
+        compPlayerGoing = 2
+        
 		if topGoingOrder == 1
 		{
 			if player2CardsArray.count == 13
@@ -546,6 +555,11 @@ class GameScreen: UIViewController {
 
 				// remove card from array
 				player2CardsArray.remove(at: 0)
+                
+                print("Card Suit Is : \(cardSuitString2)")
+                print("Starting Suit Is : \(startingSuit)")
+                print("Lowest Card Is : \(cardNameString2)")
+                print("Player 2 Card Array Count : \(player2CardsArray.count)")
 
 				// set next player to go
 				if topGoingOrder == 4
@@ -574,6 +588,8 @@ class GameScreen: UIViewController {
 	
 	func position3Goes()
 	{
+        compPlayerGoing = 3
+
 		if rightGoingOrder == 1
 		{
 			if player3CardsArray.count == 13
@@ -634,6 +650,11 @@ class GameScreen: UIViewController {
 
 				// remove card from array
 				player3CardsArray.remove(at: 0)
+                
+                print("Card Suit Is : \(cardSuitString3)")
+                print("Starting Suit Is : \(startingSuit)")
+                print("Lowest Card Is : \(cardNameString3)")
+                print("Player 2 Card Array Count : \(player3CardsArray.count)")
 
 				// set next player to go
 				if rightGoingOrder == 4
@@ -673,8 +694,11 @@ class GameScreen: UIViewController {
         //If Card Hand Is Full
         if playerCardCount == 13
 		{
+            print("Hand Full")
+
             //Button String Setup
-            for i in 0...(buttonStringCollection.count - 1)  {
+            for i in 0...(buttonStringCollection.count - 1)
+            {
                 buttonStringCollection[i] = player4CardsArray[i]
             }
             
@@ -719,7 +743,7 @@ class GameScreen: UIViewController {
             {
                 let myButton : UIButton? = cardButtonCollection?[i]
                 
-                let cardImage = UIImage(named: "\(buttonStringCollection[i]).png")!
+                let cardImage = UIImage(named: buttonStringCollection[i])!
                 myButton?.setImage(cardImage, for: .normal)
             }
             
@@ -736,6 +760,7 @@ class GameScreen: UIViewController {
         //If Card Hand Is Not Full
 		else
 		{
+            print("Hand Not Full")
             //Start With All Cards Hidden
             for i in 0...12
             {
@@ -745,8 +770,14 @@ class GameScreen: UIViewController {
                 myButton?.isHidden = true
             }
             
+            //Button String Setup
+            for i in 0...(playerCardCount - 1)
+            {
+                buttonStringCollection[i] = player4CardsArray[i]
+            }
+            
             //Setup All Cards In Play
-            for i in 0...12
+            for i in 0...(playerCardCount - 1)
             {
                 let myButton : UIButton? = cardButtonCollection?[i]
                 
@@ -757,8 +788,9 @@ class GameScreen: UIViewController {
                 myButton?.isEnabled = true
 
                 //Setup Card Image In Play
-                let cardImage = UIImage(named: "\(buttonStringCollection[i]).png")
+                let cardImage = UIImage(named: buttonStringCollection[i])
                 myButton?.setImage(cardImage, for: .normal)
+                
             }
 		}
 	}
@@ -791,24 +823,22 @@ class GameScreen: UIViewController {
             }
         )
 
-        if let cardImage = UIImage(named: "\(String(describing: cardNameString1)).png")
+        if let cardImage = UIImage(named: cardNameString1!)
         {
             leftCardPlayed?.image = cardImage
         }
+        
 
-        if let soundString = prefs.string(forKey: "soundSelect"), !soundString.hasPrefix("soundOff")
+        if let path = Bundle.main.path(forResource: "cardPlace4", ofType: "wav")
         {
-            if let path = Bundle.main.path(forResource: "cardPlace4", ofType: "wav")
-            {
-                let pathURL = URL(fileURLWithPath: path)
-                var audioEffect: SystemSoundID = 0
-                AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
-                AudioServicesPlaySystemSound(audioEffect)
+            let pathURL = URL(fileURLWithPath: path)
+            var audioEffect: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
+            AudioServicesPlaySystemSound(audioEffect)
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2)
-                {
-                    AudioServicesDisposeSystemSoundID(audioEffect)
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+            {
+                AudioServicesDisposeSystemSoundID(audioEffect)
             }
         }
 	}
@@ -840,24 +870,21 @@ class GameScreen: UIViewController {
             }
         )
 
-        if let cardImage = UIImage(named: "\(String(describing: cardNameString2)).png")
+        if let cardImage = UIImage(named: cardNameString2!)
         {
             topCardPlayed?.image = cardImage
         }
 
-        if let soundString = prefs.string(forKey: "soundSelect"), !soundString.hasPrefix("soundOff")
+        if let path = Bundle.main.path(forResource: "cardPlace3", ofType: "wav")
         {
-            if let path = Bundle.main.path(forResource: "cardPlace3", ofType: "wav")
-            {
-                let pathURL = URL(fileURLWithPath: path)
-                var audioEffect: SystemSoundID = 0
-                AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
-                AudioServicesPlaySystemSound(audioEffect)
+            let pathURL = URL(fileURLWithPath: path)
+            var audioEffect: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
+            AudioServicesPlaySystemSound(audioEffect)
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2)
-                {
-                    AudioServicesDisposeSystemSoundID(audioEffect)
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+            {
+                AudioServicesDisposeSystemSoundID(audioEffect)
             }
         }
 	}
@@ -889,24 +916,21 @@ class GameScreen: UIViewController {
             }
         )
 
-        if let cardImage = UIImage(named: "\(String(describing: cardNameString3)).png")
+        if let cardImage = UIImage(named: cardNameString3!)
         {
             rightCardPlayed?.image = cardImage
         }
 
-        if let soundString = prefs.string(forKey: "soundSelect"), !soundString.hasPrefix("soundOff")
+        if let path = Bundle.main.path(forResource: "cardPlace4", ofType: "wav")
         {
-            if let path = Bundle.main.path(forResource: "cardPlace4", ofType: "wav")
-            {
-                let pathURL = URL(fileURLWithPath: path)
-                var audioEffect: SystemSoundID = 0
-                AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
-                AudioServicesPlaySystemSound(audioEffect)
+            let pathURL = URL(fileURLWithPath: path)
+            var audioEffect: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
+            AudioServicesPlaySystemSound(audioEffect)
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2)
-                {
-                    AudioServicesDisposeSystemSoundID(audioEffect)
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+            {
+                AudioServicesDisposeSystemSoundID(audioEffect)
             }
         }
 	}
@@ -1082,24 +1106,21 @@ class GameScreen: UIViewController {
                 }
             )
 
-            if let cardImage = UIImage(named: "\(String(describing: cardNameString4)).png")
+            if let cardImage = UIImage(named: cardNameString4!)
             {
                 bottomCardPlayed?.image = cardImage
             }
 
-            if let soundString = prefs.string(forKey: "soundSelect"), !soundString.hasPrefix("soundOff")
+            if let path = Bundle.main.path(forResource: "cardPlace3", ofType: "wav")
             {
-                if let path = Bundle.main.path(forResource: "cardPlace3", ofType: "wav")
-                {
-                    let pathURL = URL(fileURLWithPath: path)
-                    var audioEffect: SystemSoundID = 0
-                    AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
-                    AudioServicesPlaySystemSound(audioEffect)
+                let pathURL = URL(fileURLWithPath: path)
+                var audioEffect: SystemSoundID = 0
+                AudioServicesCreateSystemSoundID(pathURL as CFURL, &audioEffect)
+                AudioServicesPlaySystemSound(audioEffect)
 
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2)
-                    {
-                        AudioServicesDisposeSystemSoundID(audioEffect)
-                    }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+                {
+                    AudioServicesDisposeSystemSoundID(audioEffect)
                 }
             }
         }
@@ -1260,6 +1281,11 @@ class GameScreen: UIViewController {
         print("topcard value =  %d", topCardValue)
         print("bottomcard value =  %d", bottomCardValue)
         
+        print("Player 1 Count : \(player1CardsArray.count)")
+        print("Player 2 Count : \(player2CardsArray.count)")
+        print("Player 3 Count : \(player3CardsArray.count)")
+        print("Player 4 Count : \(player4CardsArray.count)")
+        
         if leftCardValue > topCardValue && leftCardValue > rightCardValue && leftCardValue > bottomCardValue
         {
             //Set New Score
@@ -1293,16 +1319,19 @@ class GameScreen: UIViewController {
             rightCardValue = 0;
             bottomCardValue = 0;
             
-            if player1CardsArray == nil && player1CardsArray.count == 0
+            if player1CardsArray.count == 0
             {
+                print("game over 0")
                 gameOver()
             }
             else if teamOneBooks == 7 || teamTwoBooks == 7
             {
+                print("game over 7")
                 gameOver()
             }
             else
             {
+                print("Pos 1 Goes")
                 position1Goes()
             }
         }
@@ -1339,16 +1368,19 @@ class GameScreen: UIViewController {
             rightCardValue = 0
             bottomCardValue = 0
             
-            if player2CardsArray == nil && player2CardsArray.count == 0
+            if player2CardsArray.count == 0
             {
+                print("game over 0")
                 gameOver()
             }
             else if teamOneBooks == 7 || teamTwoBooks == 7
             {
+                print("game over 7")
                 gameOver()
             }
             else
             {
+                print("Pos 2 Goes")
                 position2Goes()
             }
         }
@@ -1384,16 +1416,19 @@ class GameScreen: UIViewController {
             rightCardValue = 0
             bottomCardValue = 0
             
-            if player3CardsArray == nil && player3CardsArray.count == 0
+            if player3CardsArray.count == 0
             {
+                print("game over 0")
                 gameOver()
             }
             else if teamOneBooks == 7 || teamTwoBooks == 7
             {
+                print("game over 7")
                 gameOver()
             }
             else
             {
+                print("Pos 3 Goes")
                 position3Goes()
             }
         }
@@ -1429,17 +1464,20 @@ class GameScreen: UIViewController {
             rightCardValue = 0
             bottomCardValue = 0
             
-            if player4CardsArray == nil && player4CardsArray.count == 0
+            if player4CardsArray.count == 0
             {
+                print("game over 0")
                 gameOver()
             }
             else if teamOneBooks == 7 || teamTwoBooks == 7
             {
+                print("game over 7")
                 gameOver()
                 
             }
             else
             {
+                print("Pos 4 Goes")
                 position4Goes()
             }
         }
@@ -1491,23 +1529,27 @@ class GameScreen: UIViewController {
         else
         {
             cardSuitString4 = "Spade"
-            if spadesBroken == false
-            {
-                spadesBroken = true
-                statusLabel1?.isHidden = false
-                statusLabel1?.text = "Spades Broken"
-                statusLabel1?.alpha = 0.0
+            spadesBrokenDisplay()
+        }
+    }
+    func spadesBrokenDisplay()
+    {
+        if spadesBroken == false
+        {
+            spadesBroken = true
+            statusLabel1?.isHidden = false
+            statusLabel1?.text = "Spades Broken"
+            statusLabel1?.alpha = 0.0
+            UIView.animate(withDuration: 2.0, animations: { [self] in
+                statusLabel1?.alpha = 1.0
+            }) { [self] finished in
                 UIView.animate(withDuration: 2.0, animations: { [self] in
-                    statusLabel1?.alpha = 1.0
-                }) { [self] finished in
-                    UIView.animate(withDuration: 2.0, animations: { [self] in
-                        statusLabel1?.alpha = 0.0
-                    })
-                }
+                    statusLabel1?.alpha = 0.0
+                })
             }
-            else
-            {
-            }
+        }
+        else
+        {
         }
     }
     
@@ -1537,6 +1579,8 @@ class GameScreen: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: popTime)
             {
                 self.position1Goes()
+                print("Player 1 Goes After 4")
+
             }
         }
         
@@ -1554,6 +1598,7 @@ class GameScreen: UIViewController {
         var tempArrayKingDiamond:[String] = []
         var tempArrayKingHeart:[String] = []
         var tempArraySpades:[String] = []
+        print("Comp Player Going: ",compPlayerGoing)
         
         if compPlayerGoing == 1
         {
@@ -1887,7 +1932,9 @@ class GameScreen: UIViewController {
         var tempArrayDiamond:[String] = []
         var tempArrayHeart:[String] = []
         var tempArraySpade:[String] = []
-        
+        var tempArray:[String] = []
+        print("Comp Player Going Reacts: ",compPlayerGoing)
+
         if compPlayerGoing == 1
         {
             //Filter Suits
@@ -1923,25 +1970,64 @@ class GameScreen: UIViewController {
         {
             if startingSuit!.hasPrefix("Club")
             {
-                if tempArrayClub.count > 0
+                tempArray = tempArrayClub
+            }
+            else if startingSuit!.hasPrefix("Diamond")
+            {
+                tempArray = tempArrayDiamond
+            }
+            else if startingSuit!.hasPrefix("Heart")
+            {
+                tempArray = tempArrayHeart
+            }
+            else
+            {
+                tempArray = tempArraySpade
+            }
+
+            if startingSuit!.hasPrefix("Spade")
+            {
+                if tempArray.count > 0
                 {
-                    if rightCardValue > topCardValue && rightCardValue > bottomCardValue
+                    let checkHighCardString = tempArray.last
+                    let nonDigits = CharacterSet.decimalDigits.inverted
+                    let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
+                    
+                    if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
                     {
-                        cardNameString1 = tempArrayClub[0]
+                        cardNameString1 = tempArray.last
                     }
                     else
                     {
-                        let checkHighCardString = tempArrayClub.last
+                        cardNameString1 = tempArray[0]
+                    }
+                }
+                else
+                {
+                    cardNameString1 = player1CardsArray[0]
+                }
+            }
+            else
+            {
+                if tempArray.count > 0
+                {
+                    if rightCardValue > topCardValue && rightCardValue > bottomCardValue
+                    {
+                        cardNameString1 = tempArray[0]
+                    }
+                    else
+                    {
+                        let checkHighCardString = tempArray.last
                         let nonDigits = CharacterSet.decimalDigits.inverted
                         let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
                         
                         if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
                         {
-                            cardNameString1 = tempArrayClub.last
+                            cardNameString1 = tempArray.last
                         }
                         else
                         {
-                            cardNameString1 = tempArrayClub[0]
+                            cardNameString1 = tempArray[0]
                         }
                     }
                 }
@@ -1949,47 +2035,35 @@ class GameScreen: UIViewController {
                 {
                     if rightCardValue > topCardValue && rightCardValue > bottomCardValue
                     {
-                        cardNameString1 = tempArrayClub[0]
+                        cardNameString1 = player1CardsArray[0]
                     }
                     else
                     {
-                        
+                        if tempArraySpade.count > 0
+                        {
+                            let checkLowCardString = tempArraySpade[0]
+                            let nonDigits = CharacterSet.decimalDigits.inverted
+                            let lowCardValue = Int(checkLowCardString.trimmingCharacters(in: nonDigits)) ?? 0
+                            
+                            if lowCardValue > topCardValue && lowCardValue > bottomCardValue && lowCardValue > rightCardValue
+                            {
+                                cardNameString1 = tempArraySpade[0]
+                                spadesBrokenDisplay()
+                            }
+                            else
+                            {
+                                cardNameString1 = tempArraySpade.last
+                                spadesBrokenDisplay()
+                            }
+                        }
+                        else
+                        {
+                            cardNameString1 = player1CardsArray[0]
+                        }
                     }
                 }
             }
-            else if startingSuit!.hasPrefix("Diamond")
-            {
-                if tempArrayDiamond.count > 0
-                {
-                    
-                }
-                else
-                {
-                    
-                }
-            }
-            else if startingSuit!.hasPrefix("Heart")
-            {
-                if tempArrayHeart.count > 0
-                {
-                    
-                }
-                else
-                {
-                    
-                }
-            }
-            else
-            {
-                if tempArraySpade.count > 0
-                {
-                    
-                }
-                else
-                {
-                    
-                }
-            }
+            
             let nonDigits = CharacterSet.decimalDigits.inverted
             leftCardValue = Int(cardNameString1!.trimmingCharacters(in: nonDigits)) ?? 0
             
@@ -2000,11 +2074,252 @@ class GameScreen: UIViewController {
         }
         else if compPlayerGoing == 2
         {
+            if startingSuit!.hasPrefix("Club")
+            {
+                tempArray = tempArrayClub
+            }
+            else if startingSuit!.hasPrefix("Diamond")
+            {
+                tempArray = tempArrayDiamond
+            }
+            else if startingSuit!.hasPrefix("Heart")
+            {
+                tempArray = tempArrayHeart
+            }
+            else
+            {
+                tempArray = tempArraySpade
+            }
+
+            if startingSuit!.hasPrefix("Spade")
+            {
+                if tempArray.count > 0
+                {
+                    let checkHighCardString = tempArray.last
+                    let nonDigits = CharacterSet.decimalDigits.inverted
+                    let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
+                    
+                    if highCardValue > leftCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
+                    {
+                        cardNameString2 = tempArray.last
+                    }
+                    else
+                    {
+                        cardNameString2 = tempArray[0]
+                    }
+                }
+                else
+                {
+                    cardNameString2 = player2CardsArray[0]
+                }
+            }
+            else
+            {
+                if tempArray.count > 0
+                {
+                    if bottomCardValue > leftCardValue && bottomCardValue > rightCardValue
+                    {
+                        cardNameString2 = tempArray[0]
+                    }
+                    else
+                    {
+                        let checkHighCardString = tempArray.last
+                        let nonDigits = CharacterSet.decimalDigits.inverted
+                        let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
+                        
+                        if highCardValue > leftCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
+                        {
+                            cardNameString2 = tempArray.last
+                        }
+                        else
+                        {
+                            cardNameString2 = tempArray[0]
+                        }
+                    }
+                }
+                else
+                {
+                    if bottomCardValue > leftCardValue && bottomCardValue > rightCardValue
+                    {
+                        cardNameString2 = player2CardsArray[0]
+                    }
+                    else
+                    {
+                        if tempArraySpade.count > 0
+                        {
+                            let checkLowCardString = tempArraySpade[0]
+                            let nonDigits = CharacterSet.decimalDigits.inverted
+                            let lowCardValue = Int(checkLowCardString.trimmingCharacters(in: nonDigits)) ?? 0
+                            
+                            if lowCardValue > leftCardValue && lowCardValue > bottomCardValue && lowCardValue > rightCardValue
+                            {
+                                cardNameString2 = tempArraySpade[0]
+                                spadesBrokenDisplay()
+                            }
+                            else
+                            {
+                                cardNameString2 = tempArraySpade.last
+                                spadesBrokenDisplay()
+                            }
+                        }
+                        else
+                        {
+                            cardNameString2 = player2CardsArray[0]
+                        }
+                    }
+                }
+            }
             
+            let nonDigits = CharacterSet.decimalDigits.inverted
+            topCardValue = Int(cardNameString2!.trimmingCharacters(in: nonDigits)) ?? 0
+            
+            player2SelectedCard()
+            
+            // Remove card from array
+            player2CardsArray.removeAll { $0 as AnyObject === cardNameString2 as AnyObject }
         }
-        else
+        else //Going Order 3
         {
+            if startingSuit!.hasPrefix("Club")
+            {
+                tempArray = tempArrayClub
+            }
+            else if startingSuit!.hasPrefix("Diamond")
+            {
+                tempArray = tempArrayDiamond
+            }
+            else if startingSuit!.hasPrefix("Heart")
+            {
+                tempArray = tempArrayHeart
+            }
+            else
+            {
+                tempArray = tempArraySpade
+            }
+
+            if startingSuit!.hasPrefix("Spade")
+            {
+                if tempArray.count > 0
+                {
+                    let checkHighCardString = tempArray.last
+                    let nonDigits = CharacterSet.decimalDigits.inverted
+                    let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
+                    
+                    if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > leftCardValue
+                    {
+                        cardNameString3 = tempArray.last
+                    }
+                    else
+                    {
+                        cardNameString3 = tempArray[0]
+                    }
+                }
+                else
+                {
+                    cardNameString3 = player3CardsArray[0]
+                }
+            }
+            else
+            {
+                if tempArray.count > 0
+                {
+                    if leftCardValue > topCardValue && leftCardValue > bottomCardValue
+                    {
+                        cardNameString3 = tempArray[0]
+                    }
+                    else
+                    {
+                        let checkHighCardString = tempArray.last
+                        let nonDigits = CharacterSet.decimalDigits.inverted
+                        let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
+                        
+                        if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > leftCardValue
+                        {
+                            cardNameString3 = tempArray.last
+                        }
+                        else
+                        {
+                            cardNameString3 = tempArray[0]
+                        }
+                    }
+                }
+                else
+                {
+                    if leftCardValue > topCardValue && leftCardValue > bottomCardValue
+                    {
+                        cardNameString3 = player3CardsArray[0]
+                    }
+                    else
+                    {
+                        if tempArraySpade.count > 0
+                        {
+                            let checkLowCardString = tempArraySpade[0]
+                            let nonDigits = CharacterSet.decimalDigits.inverted
+                            let lowCardValue = Int(checkLowCardString.trimmingCharacters(in: nonDigits)) ?? 0
+                            
+                            if lowCardValue > topCardValue && lowCardValue > bottomCardValue && lowCardValue > leftCardValue
+                            {
+                                cardNameString3 = tempArraySpade[0]
+                                spadesBrokenDisplay()
+                            }
+                            else
+                            {
+                                cardNameString3 = tempArraySpade.last
+                                spadesBrokenDisplay()
+                            }
+                        }
+                        else
+                        {
+                            cardNameString3 = player3CardsArray[0]
+                        }
+                    }
+                }
+            }
             
+            let nonDigits = CharacterSet.decimalDigits.inverted
+            rightCardValue = Int(cardNameString3!.trimmingCharacters(in: nonDigits)) ?? 0
+            
+            player3SelectedCard()
+            
+            // Remove card from array
+            player3CardsArray.removeAll { $0 as AnyObject === cardNameString3 as AnyObject }
+        }
+        let delayInSeconds = 1.0
+        let popTime = DispatchTime.now() + delayInSeconds
+        DispatchQueue.main.asyncAfter(deadline: popTime) { [self] in
+            if compPlayerGoing == 1
+            {
+                if leftGoingOrder == 4
+                {
+                    compareCards()
+                }
+                else
+                {
+                    position2Goes()
+                }
+            }
+            else if compPlayerGoing == 2
+            {
+                if topGoingOrder == 4
+                {
+                    compareCards()
+                }
+                else
+                {
+                    position3Goes()
+                }
+            }
+            else
+            {
+                if rightGoingOrder == 4
+                {
+                    compareCards()
+                }
+                else
+                {
+                    position4Goes()
+                }
+            }
         }
 	}
 	
