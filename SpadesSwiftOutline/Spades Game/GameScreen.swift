@@ -227,7 +227,7 @@ class GameScreen: UIViewController {
 			cardsPlayedView?.layer.shadowColor = UIColor.black.cgColor
 			cardsPlayedView?.layer.shadowOpacity = 0.35
 		}
-		
+		/*
 		//Setup Card Interaction
 		cardOriginalFrameCollection = [cardOriginalFrame1, cardOriginalFrame2, cardOriginalFrame3, cardOriginalFrame4, cardOriginalFrame5, cardOriginalFrame6, cardOriginalFrame7, cardOriginalFrame8, cardOriginalFrame9, cardOriginalFrame10, cardOriginalFrame11, cardOriginalFrame12, cardOriginalFrame13]
 		
@@ -243,7 +243,7 @@ class GameScreen: UIViewController {
 				self,
 				action: Selector(("wasDragged:withEvent:")),
 				for: .touchDragInside)
-		}
+		}*/
 
 		//Setup Game Score
 		teamOneBooks = 0
@@ -1485,7 +1485,16 @@ class GameScreen: UIViewController {
 	
 	func gameOver()
 	{
-		
+		print("Game Over")
+        if teamOneBooks == 7
+        {
+            print("Team One Wins!")
+        }
+        else
+        {
+            print("Team Two Wins!")
+        }
+        //Go To Game Over Screen
 	}
     
     //User Card Selected Functions
@@ -2321,18 +2330,6 @@ class GameScreen: UIViewController {
                 }
             }
         }
-	}
-	
-	// MARK: - User Player Views
-	
-	func userCardViewSetup()
-	{
-		
-	}
-	
-	func userCardEnabledSetup()
-	{
-		
 	}
     
     // MARK: - User Actions

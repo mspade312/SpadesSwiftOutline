@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93FA74D2D663DE8002666FC /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FA74C2D663DE8002666FC /* ProfileScreen.swift */; };
+		C93FA7502D663DF8002666FC /* SettingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FA74F2D663DF8002666FC /* SettingScreen.swift */; };
 		C9A260622D10727500F45E24 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = C9A260612D10727500F45E24 /* Sounds */; };
 		C9EC3AB02CAE3890000E7468 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AAF2CAE3890000E7468 /* AppDelegate.swift */; };
 		C9EC3AB22CAE3890000E7468 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AB12CAE3890000E7468 /* SceneDelegate.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C93FA74C2D663DE8002666FC /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		C93FA74F2D663DF8002666FC /* SettingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingScreen.swift; sourceTree = "<group>"; };
 		C9A260612D10727500F45E24 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		C9A260642D10729000F45E24 /* LuckiestGuy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LuckiestGuy.ttf; sourceTree = "<group>"; };
 		C9EC3AAC2CAE3890000E7468 /* SpadesSwiftOutline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpadesSwiftOutline.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +122,8 @@
 				C9EC3AC92CAE3904000E7468 /* PlayerSelect.swift */,
 				C9EC3ACC2CAE391D000E7468 /* GameScreen.swift */,
 				C9EC3ACF2CAE3934000E7468 /* GameOverScreen.swift */,
+				C93FA74C2D663DE8002666FC /* ProfileScreen.swift */,
+				C93FA74F2D663DF8002666FC /* SettingScreen.swift */,
 			);
 			path = "Spades Game";
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 				C9EC3AD82CAE3996000E7468 /* AvatarScreen.swift in Sources */,
 				C9EC3ACD2CAE391D000E7468 /* GameScreen.swift in Sources */,
 				C9EC3AE22CAE3A2F000E7468 /* ComputerPlayerProfiles.swift in Sources */,
+				C93FA7502D663DF8002666FC /* SettingScreen.swift in Sources */,
 				C9EC3AE62CAE3AF5000E7468 /* CardSetup.swift in Sources */,
 				C9EC3AD42CAE3988000E7468 /* PlayerScreen.swift in Sources */,
 				C9EC3ACA2CAE3904000E7468 /* PlayerSelect.swift in Sources */,
@@ -230,6 +237,7 @@
 				C9EC3ADE2CAE39E7000E7468 /* AchievementScreen.swift in Sources */,
 				C9EC3AF02CB0BABF000E7468 /* PartnerSetup.swift in Sources */,
 				C9EC3AD02CAE3934000E7468 /* GameOverScreen.swift in Sources */,
+				C93FA74D2D663DE8002666FC /* ProfileScreen.swift in Sources */,
 				C9EC3AEC2CB0B618000E7468 /* ViewSetup.swift in Sources */,
 				C9EC3AB02CAE3890000E7468 /* AppDelegate.swift in Sources */,
 				C9EC3ADB2CAE39AC000E7468 /* SettingsScreen.swift in Sources */,

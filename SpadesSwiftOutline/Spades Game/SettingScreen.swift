@@ -1,34 +1,29 @@
 //
-//  PlayerSelect.swift
+//  SettingScreen.swift
 //  SpadesSwiftOutline
 //
-//  Created by Michael Spade on 10/2/24.
+//  Created by Michael Spade on 2/19/25.
 //
 
 import UIKit
 
-class PlayerSelect: UITableViewController
+class SettingScreen: UITableViewController
 {
- 
+    // MARK: - Properties
+
+    // MARK: - IBOutlets
+
     // MARK: - Methods
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-    }
-
-    
     // MARK: - User Actions
     
     @IBAction func cancel(_ sender: UIButton)
     {
-        print("Back Button Clicked")
         presentingViewController?.dismiss(animated: true)
     }
-    
 }
