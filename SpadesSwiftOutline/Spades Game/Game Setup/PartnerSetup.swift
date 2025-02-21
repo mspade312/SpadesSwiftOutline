@@ -40,15 +40,7 @@ class PartnerSetup : UIViewController
 		var opponentImage2: UIImage?
 
 		//Partner Setup
-		for i in 0..<5 {
-			if partnerString == partnerArray[i] {
-				//gameScreen.playerNameLabel2?.text = partnerNameArray[i]
-				partnerName = partnerNameArray[i]
-				partnerImage = UIImage(named: partnerImageArray[i] as? String ?? "")!
-				//gameScreen.player2?.image = partnerImage
-				randomPartnerArray.remove(at: i)
-			}
-		}
+		
 		if partnerString == nil
 		{
 			partnerName = "Tony"
@@ -56,6 +48,20 @@ class PartnerSetup : UIViewController
 			//gameScreen.player2?.image = partnerImage
 			randomPartnerArray.remove(at: 5)
 		}
+        else
+        {
+            for i in 0..<5
+            {
+                if partnerString == partnerArray[i]
+                {
+                    //gameScreen.playerNameLabel2?.text = partnerNameArray[i]
+                    partnerName = partnerNameArray[i]
+                    partnerImage = UIImage(named: partnerImageArray[i] as? String ?? "")!
+                    //gameScreen.player2?.image = partnerImage
+                    randomPartnerArray.remove(at: i)
+                }
+            }
+        }
 		randomOpponent1 = Int(arc4random_uniform(UInt32(randomPartnerArray.count)))
 		var opponentName1 = partnerNameArray[randomOpponent1] as? String
 		opponentImage1 = UIImage(named: partnerImageArray[randomOpponent1] as? String ?? "")!

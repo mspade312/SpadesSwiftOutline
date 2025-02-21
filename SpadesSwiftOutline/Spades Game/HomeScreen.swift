@@ -91,7 +91,7 @@ class HomeScreen: UITableViewController
         let coinAmountString = prefs?.string(forKey: "coinAmountString")
         if coinAmountString == nil
         {
-            coinAmount = 100
+            coinAmount = 1000
         }
         else
         {
@@ -185,27 +185,27 @@ class HomeScreen: UITableViewController
         start6?.isEnabled = false
         start7?.isEnabled = false
         
-        if playerLevel >= 2
+        if playerLevel >= 2 && energyAmount >= 2
         {
             start2?.isEnabled = true
         }
-        else if playerLevel >= 5
+        else if playerLevel >= 5 && energyAmount >= 5
         {
             start3?.isEnabled = true
         }
-        else if playerLevel >= 10
+        else if playerLevel >= 10 && energyAmount >= 10
         {
             start4?.isEnabled = true
         }
-        else if playerLevel >= 20
+        else if playerLevel >= 20 && energyAmount >= 12
         {
             start5?.isEnabled = true
         }
-        else if playerLevel >= 35
+        else if playerLevel >= 35 && energyAmount >= 15
         {
             start6?.isEnabled = true
         }
-        else if playerLevel >= 50
+        else if playerLevel >= 50 && energyAmount >= 20
         {
             start7?.isEnabled = true
         }
@@ -228,12 +228,14 @@ class HomeScreen: UITableViewController
         {
         case start1:
         print("Start 1 Selected")
+            energyAmount -= 1
             toPartnerScreen()
             
         case start2:
         print("Start 2 Selected")
             if playerLevel >= 2
             {
+                energyAmount -= 2
                 toPartnerScreen()
             }
             
@@ -241,6 +243,7 @@ class HomeScreen: UITableViewController
         print("Start 3 Selected")
             if playerLevel >= 5
             {
+                energyAmount -= 5
                 toPartnerScreen()
             }
             
@@ -248,6 +251,7 @@ class HomeScreen: UITableViewController
         print("Start 4 Selected")
             if playerLevel >= 10
             {
+                energyAmount -= 10
                 toPartnerScreen()
             }
         
@@ -255,6 +259,7 @@ class HomeScreen: UITableViewController
         print("Start 5 Selected")
             if playerLevel >= 20
             {
+                energyAmount -= 12
                 toPartnerScreen()
             }
             
@@ -262,6 +267,7 @@ class HomeScreen: UITableViewController
         print("Start 6 Selected")
             if playerLevel >= 35
             {
+                energyAmount -= 15
                 toPartnerScreen()
             }
             
@@ -269,6 +275,7 @@ class HomeScreen: UITableViewController
         print("Start 7 Selected")
             if playerLevel >= 50
             {
+                energyAmount -= 20
                 toPartnerScreen()
             }
             

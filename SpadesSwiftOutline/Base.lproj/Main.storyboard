@@ -17,7 +17,7 @@
         <!--Game Screen-->
         <scene sceneID="7cB-ug-KNo">
             <objects>
-                <viewController storyboardIdentifier="gameScreenController" id="xTx-AZ-V2j" customClass="GameScreen" customModule="SpadesSwiftOutline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameScreen" id="xTx-AZ-V2j" customClass="GameScreen" customModule="SpadesSwiftOutline" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mSn-oQ-Duu"/>
                         <viewControllerLayoutGuide type="bottom" id="z2T-Gi-7fj"/>
