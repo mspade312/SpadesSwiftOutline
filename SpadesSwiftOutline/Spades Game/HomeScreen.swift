@@ -88,8 +88,132 @@ class HomeScreen: UITableViewController
         
         //Setup Coin Amount
         
+        let coinAmountString = prefs?.string(forKey: "coinAmountString")
+        if coinAmountString == nil
+        {
+            coinAmount = 100
+        }
+        else
+        {
+            let nonDigits = CharacterSet.decimalDigits.inverted
+            coinAmount = Int(coinAmountString!.trimmingCharacters(in: nonDigits)) ?? 0
+        }
+        coinsTotal?.text = String(coinAmount)
+
+        
         //Setup Energy Amount
+        
+        let energyAmountString = prefs?.string(forKey: "energyAmountString")
+        if energyAmountString == nil
+        {
+            energyAmount = 100
+        }
+        else
+        {
+            let nonDigits = CharacterSet.decimalDigits.inverted
+            energyAmount = Int(energyAmountString!.trimmingCharacters(in: nonDigits)) ?? 0
+        }
+        energyTotal?.text = String(energyAmount)
+        
+        //Setup Energy Refresh
+        let startingTimeCheck = prefs?.string(forKey: "startingTime")
+        if startingTimeCheck == nil
+        {
+            print("Nil Check")
+            //Set First Default Time
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = "MM/dd/yyyy HH:mm:ss"
+            let firstStartingTime = dateFormat.string(from: Date())
+            UserDefaults.standard.setValue(firstStartingTime, forKey: "startingTime")
+        }
+        
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM/dd/yyyy HH:mm:ss"
+        let currentTime = dateFormat.string(from: Date())
+        let startingTime = UserDefaults.standard.value(forKey: "startingTime") as? String
+        print(startingTime)
+        print(currentTime)
+        minCalculation_backgroundtime(startingTime, forgroundTime: currentTime)
+        
+        //Level Button Setup
+        levelsEnabled()
     }
+    
+    func minCalculation_backgroundtime(_ startingTime: String?, forgroundTime currentTime: String?)
+    {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "MM/dd/yyyy HH:mm:ss"
+
+        let lastDate = dateformat.date(from: currentTime ?? "")
+        let todaysDate = dateformat.date(from: startingTime ?? "")
+        let lastDiff = lastDate?.timeIntervalSinceNow ?? 0.0
+        let todaysDiff = todaysDate?.timeIntervalSinceNow ?? 0.0
+        let dateDiff = lastDiff - todaysDiff
+        let min = Int(dateDiff / 60)
+        print(String(format: "Good to see you after %i minutes", min))
+        
+        //Set Energy Amount
+        if energyAmount < 60
+        {
+            for i in 1..<60 - energyAmount
+            {
+                energyAmount += i
+            }
+        }
+        else
+        {
+        }
+    }
+    func toPartnerScreen()
+    {
+        var partnerSelect = PlayerSelect()
+        partnerSelect = storyboard!.instantiateViewController(withIdentifier: "playerSelect") as! PlayerSelect
+        partnerSelect.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        present(partnerSelect, animated: true)
+    }
+    
+    func levelsEnabled()
+    {
+        let nonDigits = CharacterSet.decimalDigits.inverted
+        let playerLevel = Int(profileLevelString.trimmingCharacters(in: nonDigits)) ?? 0
+        
+        start1?.isEnabled = true
+        start2?.isEnabled = false
+        start3?.isEnabled = false
+        start4?.isEnabled = false
+        start5?.isEnabled = false
+        start6?.isEnabled = false
+        start7?.isEnabled = false
+        
+        if playerLevel >= 2
+        {
+            start2?.isEnabled = true
+        }
+        else if playerLevel >= 5
+        {
+            start3?.isEnabled = true
+        }
+        else if playerLevel >= 10
+        {
+            start4?.isEnabled = true
+        }
+        else if playerLevel >= 20
+        {
+            start5?.isEnabled = true
+        }
+        else if playerLevel >= 35
+        {
+            start6?.isEnabled = true
+        }
+        else if playerLevel >= 50
+        {
+            start7?.isEnabled = true
+        }
+        else
+        {
+        }
+    }
+    
     
     
     
@@ -97,40 +221,64 @@ class HomeScreen: UITableViewController
     
     @IBAction func startSelected(sender: UIButton)
     {
+        let nonDigits = CharacterSet.decimalDigits.inverted
+        let playerLevel = Int(profileLevelString.trimmingCharacters(in: nonDigits)) ?? 0
+        
         switch sender
         {
         case start1:
         print("Start 1 Selected")
+            toPartnerScreen()
             
         case start2:
         print("Start 2 Selected")
+            if playerLevel >= 2
+            {
+                toPartnerScreen()
+            }
             
         case start3:
         print("Start 3 Selected")
+            if playerLevel >= 5
+            {
+                toPartnerScreen()
+            }
             
         case start4:
         print("Start 4 Selected")
+            if playerLevel >= 10
+            {
+                toPartnerScreen()
+            }
         
         case start5:
         print("Start 5 Selected")
+            if playerLevel >= 20
+            {
+                toPartnerScreen()
+            }
             
         case start6:
         print("Start 6 Selected")
+            if playerLevel >= 35
+            {
+                toPartnerScreen()
+            }
             
         case start7:
         print("Start 7 Selected")
+            if playerLevel >= 50
+            {
+                toPartnerScreen()
+            }
             
         case startRandom:
         print("Start Random Selected")
-        
+            toPartnerScreen()
+
         default:
             break
         }
-        
-        var partnerSelect = PlayerSelect()
-        partnerSelect = storyboard!.instantiateViewController(withIdentifier: "playerSelect") as! PlayerSelect
-        partnerSelect.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        present(partnerSelect, animated: true)
     }
     
     @IBAction func settingsSelected(sender: UIButton)
