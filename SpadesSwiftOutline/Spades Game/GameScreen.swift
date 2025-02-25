@@ -177,6 +177,9 @@ class GameScreen: UIViewController {
 	
 	@IBOutlet weak var progressView: UIView?
 	@IBOutlet weak var progressBar: UIProgressView?
+    
+    @IBOutlet weak var gameOverView: UIView?
+
 	
 	// MARK: - Methods
 	
@@ -252,6 +255,9 @@ class GameScreen: UIViewController {
 		score2Label?.text = String(format: "Books : %li", Int(teamTwoBooks))
 		inGameBonus = 0
 		
+        //Hide Game Over Screen
+        gameOverView?.isHidden = true
+        
 		//Start Partner Setup
 		partnerSetup()
 	}
@@ -770,27 +776,32 @@ class GameScreen: UIViewController {
                 myButton?.isHidden = true
             }
             
-            //Button String Setup
-            for i in 0...(playerCardCount - 1)
+            if playerCardCount == 0
             {
-                buttonStringCollection[i] = player4CardsArray[i]
             }
-            
-            //Setup All Cards In Play
-            for i in 0...(playerCardCount - 1)
+            else
             {
-                let myButton : UIButton? = cardButtonCollection?[i]
+                //Button String Setup
+                for i in 0...(playerCardCount - 1)
+                {
+                    buttonStringCollection[i] = player4CardsArray[i]
+                }
                 
-                //Show All Cards In Play
-                myButton?.isHidden = false
-                
-                //Enable All Cards In Play
-                myButton?.isEnabled = true
+                //Setup All Cards In Play
+                for i in 0...(playerCardCount - 1)
+                {
+                    let myButton : UIButton? = cardButtonCollection?[i]
+                    
+                    //Show All Cards In Play
+                    myButton?.isHidden = false
+                    
+                    //Enable All Cards In Play
+                    myButton?.isEnabled = true
 
-                //Setup Card Image In Play
-                let cardImage = UIImage(named: buttonStringCollection[i])
-                myButton?.setImage(cardImage, for: .normal)
-                
+                    //Setup Card Image In Play
+                    let cardImage = UIImage(named: buttonStringCollection[i])
+                    myButton?.setImage(cardImage, for: .normal)
+                }
             }
 		}
 	}
@@ -1494,7 +1505,8 @@ class GameScreen: UIViewController {
         {
             print("Team Two Wins!")
         }
-        //Go To Game Over Screen
+        //Show Game Over Screen
+        gameOverView?.isHidden = false
 	}
     
     //User Card Selected Functions
@@ -2559,9 +2571,13 @@ class GameScreen: UIViewController {
                 
                 afterUserCardSelected()
             }
-
         }
-
+    }
+    
+    @IBAction func toHomeScreen(_ sender: UIButton)
+    {
+        print("Home Button Clicked")
+        view.window?.rootViewController?.dismiss(animated: false, completion: nil)
     }
 
 	
