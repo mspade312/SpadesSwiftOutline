@@ -30,7 +30,6 @@ class HomeScreen: UITableViewController
     @IBOutlet weak var start6: UIButton?
     @IBOutlet weak var start7: UIButton?
     @IBOutlet weak var startRandom: UIButton?
-    //@IBOutlet var startButtonCollection: [UIButton]?
  
     @IBOutlet weak var coinsTotal: UILabel?
     @IBOutlet weak var energyTotal: UILabel?
@@ -308,6 +307,11 @@ class HomeScreen: UITableViewController
         present(profileSelected, animated: true)
     }
     
+    @IBAction func moreCoinsEnergySelected(sender: UIControl)
+    {
+        print("More Coins / Energry Button Clicked")
+
+    }
     
     
 }

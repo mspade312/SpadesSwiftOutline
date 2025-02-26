@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -129,12 +130,18 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-e3-jm9">
                                 <rect key="frame" x="20" y="43" width="44" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="baseline_menu_white_48dp"/>
+                                <state key="normal" image="baseline_close_white_48dp"/>
+                                <connections>
+                                    <action selector="quitButton:" destination="xTx-AZ-V2j" eventType="touchDown" id="6rQ-0n-loi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwe-qT-WKb">
                                 <rect key="frame" x="355" y="44" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="outline_info_white_48dp"/>
+                                <connections>
+                                    <action selector="infoButton:" destination="xTx-AZ-V2j" eventType="touchDown" id="NGl-lk-8xe"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic6" translatesAutoresizingMaskIntoConstraints="NO" id="Iir-bv-OOF">
                                 <rect key="frame" x="171" y="145" width="71" height="86"/>
@@ -345,7 +352,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="achievementBonusScoreLabel" destination="qVW-OJ-eGC" id="Qb0-G1-AEr"/>
                         <outlet property="backgroundImage" destination="ySs-5M-JHX" id="r7Y-0g-63o"/>
+                        <outlet property="booksTakenScoreLabel" destination="Qv1-O1-6Mg" id="bvA-MS-3hc"/>
                         <outlet property="bottomCardPlayed" destination="v64-mt-Wrg" id="Ggp-F4-pp9"/>
                         <outlet property="card1" destination="VHf-SV-uLD" id="Ped-jT-lJA"/>
                         <outlet property="card10" destination="HZ4-hU-5i5" id="816-AA-ij5"/>
@@ -360,10 +369,9 @@
                         <outlet property="card7" destination="p2P-Y8-uJF" id="rsK-T9-zRw"/>
                         <outlet property="card8" destination="sTU-xT-aiO" id="bBc-pM-0xp"/>
                         <outlet property="card9" destination="rem-3t-IsN" id="TDX-QK-aDX"/>
+                        <outlet property="gameOverLabel" destination="YLc-rK-sxi" id="j3l-QE-nkb"/>
                         <outlet property="gameOverView" destination="Y96-eR-0bz" id="8XD-AG-xh0"/>
-                        <outlet property="infoButton" destination="hwe-qT-WKb" id="v1A-kF-HRt"/>
                         <outlet property="leftCardPlayed" destination="CSj-zl-1P9" id="5kM-0O-ypq"/>
-                        <outlet property="menuButton" destination="Z2w-e3-jm9" id="5Tq-dU-DYf"/>
                         <outlet property="player1" destination="qZo-u1-RmH" id="9br-d6-7fP"/>
                         <outlet property="player2" destination="Iir-bv-OOF" id="1Yx-43-NE5"/>
                         <outlet property="player3" destination="Fou-pI-6Ke" id="jvu-Pb-x9I"/>
@@ -378,6 +386,8 @@
                         <outlet property="titleScoreLabel1" destination="Lol-1c-XmI" id="FMQ-Sh-zSH"/>
                         <outlet property="titleScoreLabel2" destination="sPF-bA-EK2" id="5nA-lR-Dc6"/>
                         <outlet property="topCardPlayed" destination="cHE-MS-gvL" id="KUo-WF-OZs"/>
+                        <outlet property="totalGamePointsScoreLabel" destination="uXg-Oj-Lo1" id="PxO-om-FKE"/>
+                        <outlet property="winScoreLabel" destination="E7Q-Ey-P7t" id="y6M-aA-mVW"/>
                         <outletCollection property="cardButtonCollection" destination="VHf-SV-uLD" collectionClass="NSMutableArray" id="9DX-V4-rgB"/>
                         <outletCollection property="cardButtonCollection" destination="Irl-pV-EiJ" collectionClass="NSMutableArray" id="qu8-4P-Zry"/>
                         <outletCollection property="cardButtonCollection" destination="fIq-fz-BOk" collectionClass="NSMutableArray" id="BX3-os-aEU"/>
@@ -852,12 +862,12 @@
                                             <rect key="frame" x="210" y="-1" width="204" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-ZU-5Kn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="64"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-ZU-5Kn" customClass="UIControl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLV-r4-pOI">
-                                                            <rect key="frame" x="33" y="8" width="40" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWF-Z8-0rl">
+                                                            <rect key="frame" x="33" y="7" width="43" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -865,13 +875,13 @@
                                                             <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <size key="shadowOffset" width="2" height="2"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic5" translatesAutoresizingMaskIntoConstraints="NO" id="i4x-Qm-Zr7">
-                                                            <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic5" translatesAutoresizingMaskIntoConstraints="NO" id="ff5-TM-FXi">
+                                                            <rect key="frame" x="8" y="7" width="24" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrb-mi-Uhk">
-                                                            <rect key="frame" x="105" y="8" width="40" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8W-3f-Vad">
+                                                            <rect key="frame" x="106" y="7" width="40" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -879,13 +889,13 @@
                                                             <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <size key="shadowOffset" width="2" height="2"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic5" translatesAutoresizingMaskIntoConstraints="NO" id="YTk-hc-KXl">
-                                                            <rect key="frame" x="81" y="8" width="24" height="24"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic5" translatesAutoresizingMaskIntoConstraints="NO" id="OZq-gy-V3G">
+                                                            <rect key="frame" x="82" y="7" width="24" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2i8-2F-vvs">
-                                                            <rect key="frame" x="8" y="32" width="65" height="26"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcq-Mm-kN1">
+                                                            <rect key="frame" x="8" y="31" width="66" height="26"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -893,8 +903,8 @@
                                                             <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <size key="shadowOffset" width="2" height="2"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Energy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W68-Wa-Z0k">
-                                                            <rect key="frame" x="81" y="32" width="65" height="26"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Energy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB8-CH-giB">
+                                                            <rect key="frame" x="82" y="31" width="62" height="26"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -902,25 +912,29 @@
                                                             <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <size key="shadowOffset" width="2" height="2"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgI-wn-cGB">
-                                                            <rect key="frame" x="158" y="13" width="38" height="38"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <size key="titleShadowOffset" width="1" height="2"/>
-                                                            <state key="normal" image="gearshape.fill" catalog="system">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="settingsSelectedWithSender:" destination="Hfh-AL-OXl" eventType="touchDown" id="4ko-ln-vWS"/>
-                                                                <action selector="startSelectedWithSender:" destination="EL4-l7-6oD" eventType="touchDown" id="Yjj-nG-tcD"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                                    <connections>
+                                                        <action selector="moreCoinsEnergySelectedWithSender:" destination="Hfh-AL-OXl" eventType="touchDown" id="V7H-yk-eap"/>
+                                                    </connections>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgI-wn-cGB">
+                                                    <rect key="frame" x="153" y="10" width="43" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <size key="titleShadowOffset" width="1" height="2"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="settingsSelectedWithSender:" destination="Hfh-AL-OXl" eventType="touchDown" id="4ko-ln-vWS"/>
+                                                        <action selector="startSelectedWithSender:" destination="EL4-l7-6oD" eventType="touchDown" id="Yjj-nG-tcD"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         </view>
@@ -1322,8 +1336,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="V1j-Om-rlI"/>
                     <connections>
-                        <outlet property="coinsTotal" destination="YLV-r4-pOI" id="sLX-xs-Ayp"/>
-                        <outlet property="energyTotal" destination="mrb-mi-Uhk" id="dd9-T0-NBx"/>
+                        <outlet property="coinsTotal" destination="VWF-Z8-0rl" id="dNG-bB-TW0"/>
+                        <outlet property="energyTotal" destination="H8W-3f-Vad" id="vI4-Nt-xpp"/>
                         <outlet property="profileLevelLabel" destination="dN8-nX-egM" id="8eT-0i-Buq"/>
                         <outlet property="profileNameLabel" destination="CC9-Sa-DEQ" id="8hQ-Ht-WM2"/>
                         <outlet property="profileView" destination="rSv-xO-Jhx" id="UNv-Mv-exs"/>

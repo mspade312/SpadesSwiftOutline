@@ -131,14 +131,6 @@ class GameScreen: UIViewController {
 	@IBOutlet weak var card13: UIButton?
 	@IBOutlet var cardButtonCollection: [UIButton]?
 	
-	@IBOutlet weak var startGame: UIButton?
-	@IBOutlet weak var partnersButton: UIButton?
-	@IBOutlet weak var infoButton: UIButton?
-	@IBOutlet weak var menuButton: UIButton?
-	@IBOutlet weak var infoButton2: UIButton?
-	@IBOutlet weak var menuButton2: UIButton?
-	@IBOutlet weak var startNewGameButton: UIButton?
-	
 	@IBOutlet var leftCardPlayed: UIImageView?
 	@IBOutlet var topCardPlayed: UIImageView?
 	@IBOutlet var rightCardPlayed: UIImageView?
@@ -152,32 +144,19 @@ class GameScreen: UIViewController {
 	
 	@IBOutlet weak var score1Label: UILabel?
 	@IBOutlet weak var score2Label: UILabel?
-	@IBOutlet weak var teamWinnerLabel: UILabel?
 	@IBOutlet weak var gameOverLabel: UILabel?
 	@IBOutlet weak var titleScoreLabel1: UILabel?
 	@IBOutlet weak var titleScoreLabel2: UILabel?
 	@IBOutlet weak var statusLabel1: UILabel?
 	@IBOutlet weak var statusLabel2: UILabel?
-	@IBOutlet weak var achievementLabel1: UILabel?
-	@IBOutlet weak var achievementLabel2: UILabel?
-	@IBOutlet weak var achievementLabel3: UILabel?
-	@IBOutlet weak var achievementStatusLabel1: UILabel?
-	@IBOutlet weak var achievementStatusLabel2: UILabel?
-	@IBOutlet weak var achievementStatusLabel3: UILabel?
 	@IBOutlet weak var playerNameLabel1: UILabel?
 	@IBOutlet weak var playerNameLabel2: UILabel?
 	@IBOutlet weak var playerNameLabel3: UILabel?
-	@IBOutlet weak var copyrightLabel: UILabel?
-	@IBOutlet weak var rankLabel: UILabel?
-	@IBOutlet weak var rankPointsLabel: UILabel?
 	@IBOutlet weak var winScoreLabel: UILabel?
 	@IBOutlet weak var booksTakenScoreLabel: UILabel?
 	@IBOutlet weak var achievementBonusScoreLabel: UILabel?
 	@IBOutlet weak var totalGamePointsScoreLabel: UILabel?
-	
-	@IBOutlet weak var progressView: UIView?
-	@IBOutlet weak var progressBar: UIProgressView?
-    
+	    
     @IBOutlet weak var gameOverView: UIView?
 
 	
@@ -1611,138 +1590,17 @@ class GameScreen: UIViewController {
 
 	func compPlayerStarts()
 	{
-		//Variables
-        var tempArrayAcesClub:[String] = []
-        var tempArrayAcesDiamond:[String] = []
-        var tempArrayAcesHeart:[String] = []
-        var tempArrayKingClub:[String] = []
-        var tempArrayKingDiamond:[String] = []
-        var tempArrayKingHeart:[String] = []
-        var tempArraySpades:[String] = []
-        print("Comp Player Going: ",compPlayerGoing)
+        //Variables
+        let compPlayerSetup = ComputerPlayerProfiles()
         
+        //Setup Computer Players
         if compPlayerGoing == 1
         {
-            //Filter Aces
-            tempArrayAcesClub = player1CardsArray.filter(){ $0.contains("Club14") }
-            tempArrayAcesDiamond = player1CardsArray.filter(){ $0.contains("Diamond14") }
-            tempArrayAcesHeart = player1CardsArray.filter(){ $0.contains("Heart14") }
-            //Filter Kings
-            tempArrayKingClub = player1CardsArray.filter(){ $0.contains("Club13") }
-            tempArrayKingDiamond = player1CardsArray.filter(){ $0.contains("Diamond13") }
-            tempArrayKingHeart = player1CardsArray.filter(){ $0.contains("Heart13") }
-            //Filter All Spades
-            tempArraySpades = player1CardsArray.filter(){ $0.contains("Spade") }
-        }
-        else if compPlayerGoing == 2
-        {
-            //Filter Aces
-            tempArrayAcesClub = player2CardsArray.filter(){ $0.contains("Club14") }
-            tempArrayAcesDiamond = player2CardsArray.filter(){ $0.contains("Diamond14") }
-            tempArrayAcesHeart = player2CardsArray.filter(){ $0.contains("Heart14") }
-            //Filter Kings
-            tempArrayKingClub = player2CardsArray.filter(){ $0.contains("Club13") }
-            tempArrayKingDiamond = player2CardsArray.filter(){ $0.contains("Diamond13") }
-            tempArrayKingHeart = player2CardsArray.filter(){ $0.contains("Heart13") }
-            //Filter All Spades
-            tempArraySpades = player2CardsArray.filter(){ $0.contains("Spade") }
-        }
-        else
-        {
-            //Filter Aces
-            tempArrayAcesClub = player3CardsArray.filter(){ $0.contains("Club14") }
-            tempArrayAcesDiamond = player3CardsArray.filter(){ $0.contains("Diamond14") }
-            tempArrayAcesHeart = player3CardsArray.filter(){ $0.contains("Heart14") }
-            //Filter Kings
-            tempArrayKingClub = player3CardsArray.filter(){ $0.contains("Club13") }
-            tempArrayKingDiamond = player3CardsArray.filter(){ $0.contains("Diamond13") }
-            tempArrayKingHeart = player3CardsArray.filter(){ $0.contains("Heart13") }
-            //Filter All Spades
-            tempArraySpades = player3CardsArray.filter(){ $0.contains("Spade") }
-        }
-        //Sort Comp Player Spade Cards
-        tempArraySpades.sort { $0.localizedStandardCompare($1) == .orderedAscending }
-        
-        if compPlayerGoing == 1
-        {
-            //Check For Aces
-            if tempArrayAcesClub.count > 0
-            {
-                cardNameString1 = tempArrayAcesClub[0]
-            }
-            else if tempArrayAcesDiamond.count > 0
-            {
-                cardNameString1 = tempArrayAcesDiamond[0]
-            }
-            else if tempArrayAcesHeart.count > 0
-            {
-                cardNameString1 = tempArrayAcesHeart[0]
-            }
-            //Check For Kings If Aces Has Already Been Played
-            else if aceClubsPlayed == true && tempArrayKingClub.count > 0
-            {
-                cardNameString1 = tempArrayKingClub[0]
-            }
-            else if aceDiamondsPlayed == true && tempArrayKingDiamond.count > 0
-            {
-                cardNameString1 = tempArrayKingDiamond[0]
-            }
-            else if aceHeartsPlayed == true && tempArrayKingHeart.count > 0
-            {
-                cardNameString1 = tempArrayKingHeart[0]
-            }
-            else if spadesBroken == true && tempArraySpades.count > 0
-            {
-                let checkSpadeString = tempArraySpades.last
-                let nonDigits = CharacterSet.decimalDigits.inverted
-                let tempCardValue = Int(checkSpadeString!.trimmingCharacters(in: nonDigits)) ?? 0
-                
-                if tempCardValue == 39
-                {
-                    cardNameString1 = tempArraySpades.last
-                }
-                else if tempCardValue == 38 && twoHearts == true
-                {
-                    cardNameString1 = tempArraySpades.last
-                }
-                else if tempCardValue == 37 && twoHearts == true && twoClubs == true
-                {
-                    cardNameString1 = tempArraySpades.last
-                }
-                else if tempCardValue == 36 && twoHearts == true && twoClubs == true && twoDiamonds == true
-                {
-                    cardNameString1 = tempArraySpades.last
-                }
-                else //Play Lowest Spade
-                {
-                    cardNameString1 = tempArraySpades[0]
-                }
-            }
-            //Else Play Lowest Card
-            else
-            {
-                cardNameString1 = player1CardsArray[0]
-            }
-            if cardNameString1!.contains("Club")
-            {
-                cardSuitString1 = "Club"
-                startingSuit = "Club"
-            }
-            else if cardNameString1!.contains("Diamond")
-            {
-                cardSuitString1 = "Diamond"
-                startingSuit = "Diamond"
-            }
-            else if cardNameString1!.contains("Heart")
-            {
-                cardSuitString1 = "Heart"
-                startingSuit = "Heart"
-            }
-            else
-            {
-                cardSuitString1 = "Spade"
-                startingSuit = "Spade"
-            }
+            let compPlayerValues = compPlayerSetup.compPlayer1Starts(playerArrayPassed: player1CardsArray, spadesBrokenPassed: spadesBroken, aceClubsPlayedPassed: aceClubsPlayed, aceDiamondsPlayedPassed: aceDiamondsPlayed, aceHeartsPlayedPassed: aceHeartsPlayed, twoHeartsPassed: twoHearts, twoClubsPassed: twoClubs, twoDiamondsPassed: twoDiamonds)
+            cardNameString1 = compPlayerValues.0
+            cardSuitString1 = compPlayerValues.1
+            startingSuit = compPlayerValues.2
+            
             let nonDigits = CharacterSet.decimalDigits.inverted
             leftCardValue = Int(cardNameString1!.trimmingCharacters(in: nonDigits)) ?? 0
             
@@ -1753,84 +1611,11 @@ class GameScreen: UIViewController {
         }
         else if compPlayerGoing == 2
         {
-            //Check For Aces
-            if tempArrayAcesClub.count > 0
-            {
-                cardNameString2 = tempArrayAcesClub[0]
-            }
-            else if tempArrayAcesDiamond.count > 0
-            {
-                cardNameString2 = tempArrayAcesDiamond[0]
-            }
-            else if tempArrayAcesHeart.count > 0
-            {
-                cardNameString2 = tempArrayAcesHeart[0]
-            }
-            //Check For Kings If Aces Has Already Been Played
-            else if aceClubsPlayed == true && tempArrayKingClub.count > 0
-            {
-                cardNameString2 = tempArrayKingClub[0]
-            }
-            else if aceDiamondsPlayed == true && tempArrayKingDiamond.count > 0
-            {
-                cardNameString2 = tempArrayKingDiamond[0]
-            }
-            else if aceHeartsPlayed == true && tempArrayKingHeart.count > 0
-            {
-                cardNameString2 = tempArrayKingHeart[0]
-            }
-            else if spadesBroken == true && tempArraySpades.count > 0
-            {
-                let checkSpadeString = tempArraySpades.last
-                let nonDigits = CharacterSet.decimalDigits.inverted
-                let tempCardValue = Int(checkSpadeString!.trimmingCharacters(in: nonDigits)) ?? 0
-                
-                if tempCardValue == 39
-                {
-                    cardNameString2 = tempArraySpades.last
-                }
-                else if tempCardValue == 38 && twoHearts == true
-                {
-                    cardNameString2 = tempArraySpades.last
-                }
-                else if tempCardValue == 37 && twoHearts == true && twoClubs == true
-                {
-                    cardNameString2 = tempArraySpades.last
-                }
-                else if tempCardValue == 36 && twoHearts == true && twoClubs == true && twoDiamonds == true
-                {
-                    cardNameString2 = tempArraySpades.last
-                }
-                else //Play Lowest Spade
-                {
-                    cardNameString2 = tempArraySpades[0]
-                }
-            }
-            //Else Play Lowest Card
-            else
-            {
-                cardNameString2 = player2CardsArray[0]
-            }
-            if cardNameString2!.contains("Club")
-            {
-                cardSuitString2 = "Club"
-                startingSuit = "Club"
-            }
-            else if cardNameString2!.contains("Diamond")
-            {
-                cardSuitString2 = "Diamond"
-                startingSuit = "Diamond"
-            }
-            else if cardNameString2!.contains("Heart")
-            {
-                cardSuitString2 = "Heart"
-                startingSuit = "Heart"
-            }
-            else
-            {
-                cardSuitString2 = "Spade"
-                startingSuit = "Spade"
-            }
+            let compPlayerValues = compPlayerSetup.compPlayer1Starts(playerArrayPassed: player2CardsArray, spadesBrokenPassed: spadesBroken, aceClubsPlayedPassed: aceClubsPlayed, aceDiamondsPlayedPassed: aceDiamondsPlayed, aceHeartsPlayedPassed: aceHeartsPlayed, twoHeartsPassed: twoHearts, twoClubsPassed: twoClubs, twoDiamondsPassed: twoDiamonds)
+            cardNameString2 = compPlayerValues.0
+            cardSuitString2 = compPlayerValues.1
+            startingSuit = compPlayerValues.2
+            
             let nonDigits = CharacterSet.decimalDigits.inverted
             topCardValue = Int(cardNameString2!.trimmingCharacters(in: nonDigits)) ?? 0
             
@@ -1841,84 +1626,11 @@ class GameScreen: UIViewController {
         }
         else
         {
-            //Check For Aces
-            if tempArrayAcesClub.count > 0
-            {
-                cardNameString3 = tempArrayAcesClub[0]
-            }
-            else if tempArrayAcesDiamond.count > 0
-            {
-                cardNameString3 = tempArrayAcesDiamond[0]
-            }
-            else if tempArrayAcesHeart.count > 0
-            {
-                cardNameString3 = tempArrayAcesHeart[0]
-            }
-            //Check For Kings If Aces Has Already Been Played
-            else if aceClubsPlayed == true && tempArrayKingClub.count > 0
-            {
-                cardNameString3 = tempArrayKingClub[0]
-            }
-            else if aceDiamondsPlayed == true && tempArrayKingDiamond.count > 0
-            {
-                cardNameString3 = tempArrayKingDiamond[0]
-            }
-            else if aceHeartsPlayed == true && tempArrayKingHeart.count > 0
-            {
-                cardNameString3 = tempArrayKingHeart[0]
-            }
-            else if spadesBroken == true && tempArraySpades.count > 0
-            {
-                let checkSpadeString = tempArraySpades.last
-                let nonDigits = CharacterSet.decimalDigits.inverted
-                let tempCardValue = Int(checkSpadeString!.trimmingCharacters(in: nonDigits)) ?? 0
-                
-                if tempCardValue == 39
-                {
-                    cardNameString3 = tempArraySpades.last
-                }
-                else if tempCardValue == 38 && twoHearts == true
-                {
-                    cardNameString3 = tempArraySpades.last
-                }
-                else if tempCardValue == 37 && twoHearts == true && twoClubs == true
-                {
-                    cardNameString3 = tempArraySpades.last
-                }
-                else if tempCardValue == 36 && twoHearts == true && twoClubs == true && twoDiamonds == true
-                {
-                    cardNameString3 = tempArraySpades.last
-                }
-                else //Play Lowest Spade
-                {
-                    cardNameString3 = tempArraySpades[0]
-                }
-            }
-            //Else Play Lowest Card
-            else
-            {
-                cardNameString3 = player3CardsArray[0]
-            }
-            if cardNameString3!.contains("Club")
-            {
-                cardSuitString3 = "Club"
-                startingSuit = "Club"
-            }
-            else if cardNameString3!.contains("Diamond")
-            {
-                cardSuitString3 = "Diamond"
-                startingSuit = "Diamond"
-            }
-            else if cardNameString3!.contains("Heart")
-            {
-                cardSuitString3 = "Heart"
-                startingSuit = "Heart"
-            }
-            else
-            {
-                cardSuitString3 = "Spade"
-                startingSuit = "Spade"
-            }
+            let compPlayerValues = compPlayerSetup.compPlayer1Starts(playerArrayPassed: player3CardsArray, spadesBrokenPassed: spadesBroken, aceClubsPlayedPassed: aceClubsPlayed, aceDiamondsPlayedPassed: aceDiamondsPlayed, aceHeartsPlayedPassed: aceHeartsPlayed, twoHeartsPassed: twoHearts, twoClubsPassed: twoClubs, twoDiamondsPassed: twoDiamonds)
+            cardNameString3 = compPlayerValues.0
+            cardSuitString3 = compPlayerValues.1
+            startingSuit = compPlayerValues.2
+            
             let nonDigits = CharacterSet.decimalDigits.inverted
             rightCardValue = Int(cardNameString3!.trimmingCharacters(in: nonDigits)) ?? 0
             
@@ -1944,146 +1656,17 @@ class GameScreen: UIViewController {
                 position4Goes()
             }
         }
-        
 	}
 	func compPlayerReacts()
 	{
         //Variables
-        var tempArrayClub:[String] = []
-        var tempArrayDiamond:[String] = []
-        var tempArrayHeart:[String] = []
-        var tempArraySpade:[String] = []
-        var tempArray:[String] = []
-        print("Comp Player Going Reacts: ",compPlayerGoing)
-
+        let compPlayerSetup = ComputerPlayerProfiles()
+        
+        //Setup Computer Players
         if compPlayerGoing == 1
         {
-            //Filter Suits
-            tempArrayClub = player1CardsArray.filter(){ $0.contains("Club") }
-            tempArrayDiamond = player1CardsArray.filter(){ $0.contains("Diamond") }
-            tempArrayHeart = player1CardsArray.filter(){ $0.contains("Heart") }
-            tempArraySpade = player1CardsArray.filter(){ $0.contains("Spade") }
-            
-        }
-        else if compPlayerGoing == 2
-        {
-            //Filter Suits
-            tempArrayClub = player2CardsArray.filter(){ $0.contains("Club") }
-            tempArrayDiamond = player2CardsArray.filter(){ $0.contains("Diamond") }
-            tempArrayHeart = player2CardsArray.filter(){ $0.contains("Heart") }
-            tempArraySpade = player2CardsArray.filter(){ $0.contains("Spade") }
-        }
-        else
-        {
-            //Filter Suits
-            tempArrayClub = player3CardsArray.filter(){ $0.contains("Club") }
-            tempArrayDiamond = player3CardsArray.filter(){ $0.contains("Diamond") }
-            tempArrayHeart = player3CardsArray.filter(){ $0.contains("Heart") }
-            tempArraySpade = player3CardsArray.filter(){ $0.contains("Spade") }
-        }
-        //Sort Comp Player Cards By Suit
-        tempArrayClub.sort { $0.localizedStandardCompare($1) == .orderedAscending }
-        tempArrayDiamond.sort { $0.localizedStandardCompare($1) == .orderedAscending }
-        tempArrayHeart.sort { $0.localizedStandardCompare($1) == .orderedAscending }
-        tempArraySpade.sort { $0.localizedStandardCompare($1) == .orderedAscending }
-
-        if compPlayerGoing == 1
-        {
-            if startingSuit!.hasPrefix("Club")
-            {
-                tempArray = tempArrayClub
-            }
-            else if startingSuit!.hasPrefix("Diamond")
-            {
-                tempArray = tempArrayDiamond
-            }
-            else if startingSuit!.hasPrefix("Heart")
-            {
-                tempArray = tempArrayHeart
-            }
-            else
-            {
-                tempArray = tempArraySpade
-            }
-
-            if startingSuit!.hasPrefix("Spade")
-            {
-                if tempArray.count > 0
-                {
-                    let checkHighCardString = tempArray.last
-                    let nonDigits = CharacterSet.decimalDigits.inverted
-                    let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
-                    
-                    if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
-                    {
-                        cardNameString1 = tempArray.last
-                    }
-                    else
-                    {
-                        cardNameString1 = tempArray[0]
-                    }
-                }
-                else
-                {
-                    cardNameString1 = player1CardsArray[0]
-                }
-            }
-            else
-            {
-                if tempArray.count > 0
-                {
-                    if rightCardValue > topCardValue && rightCardValue > bottomCardValue
-                    {
-                        cardNameString1 = tempArray[0]
-                    }
-                    else
-                    {
-                        let checkHighCardString = tempArray.last
-                        let nonDigits = CharacterSet.decimalDigits.inverted
-                        let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
-                        
-                        if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
-                        {
-                            cardNameString1 = tempArray.last
-                        }
-                        else
-                        {
-                            cardNameString1 = tempArray[0]
-                        }
-                    }
-                }
-                else
-                {
-                    if rightCardValue > topCardValue && rightCardValue > bottomCardValue
-                    {
-                        cardNameString1 = player1CardsArray[0]
-                    }
-                    else
-                    {
-                        if tempArraySpade.count > 0
-                        {
-                            let checkLowCardString = tempArraySpade[0]
-                            let nonDigits = CharacterSet.decimalDigits.inverted
-                            let lowCardValue = Int(checkLowCardString.trimmingCharacters(in: nonDigits)) ?? 0
-                            
-                            if lowCardValue > topCardValue && lowCardValue > bottomCardValue && lowCardValue > rightCardValue
-                            {
-                                cardNameString1 = tempArraySpade[0]
-                                spadesBrokenDisplay()
-                            }
-                            else
-                            {
-                                cardNameString1 = tempArraySpade.last
-                                spadesBrokenDisplay()
-                            }
-                        }
-                        else
-                        {
-                            cardNameString1 = player1CardsArray[0]
-                        }
-                    }
-                }
-            }
+            let compPlayerValues = compPlayerSetup.compPlayer1Reacts(playerArrayPassed: player1CardsArray, startingSuitPassed: startingSuit, leftCardValuePassed: leftCardValue, topCardValuePassed: topCardValue, rightCardValuePassed: rightCardValue, bottomCardValuePassed: bottomCardValue, compPlayerGoingPassed: compPlayerGoing)
+            cardNameString1 = compPlayerValues
             
             let nonDigits = CharacterSet.decimalDigits.inverted
             leftCardValue = Int(cardNameString1!.trimmingCharacters(in: nonDigits)) ?? 0
@@ -2095,101 +1678,8 @@ class GameScreen: UIViewController {
         }
         else if compPlayerGoing == 2
         {
-            if startingSuit!.hasPrefix("Club")
-            {
-                tempArray = tempArrayClub
-            }
-            else if startingSuit!.hasPrefix("Diamond")
-            {
-                tempArray = tempArrayDiamond
-            }
-            else if startingSuit!.hasPrefix("Heart")
-            {
-                tempArray = tempArrayHeart
-            }
-            else
-            {
-                tempArray = tempArraySpade
-            }
-
-            if startingSuit!.hasPrefix("Spade")
-            {
-                if tempArray.count > 0
-                {
-                    let checkHighCardString = tempArray.last
-                    let nonDigits = CharacterSet.decimalDigits.inverted
-                    let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
-                    
-                    if highCardValue > leftCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
-                    {
-                        cardNameString2 = tempArray.last
-                    }
-                    else
-                    {
-                        cardNameString2 = tempArray[0]
-                    }
-                }
-                else
-                {
-                    cardNameString2 = player2CardsArray[0]
-                }
-            }
-            else
-            {
-                if tempArray.count > 0
-                {
-                    if bottomCardValue > leftCardValue && bottomCardValue > rightCardValue
-                    {
-                        cardNameString2 = tempArray[0]
-                    }
-                    else
-                    {
-                        let checkHighCardString = tempArray.last
-                        let nonDigits = CharacterSet.decimalDigits.inverted
-                        let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
-                        
-                        if highCardValue > leftCardValue && highCardValue > bottomCardValue && highCardValue > rightCardValue
-                        {
-                            cardNameString2 = tempArray.last
-                        }
-                        else
-                        {
-                            cardNameString2 = tempArray[0]
-                        }
-                    }
-                }
-                else
-                {
-                    if bottomCardValue > leftCardValue && bottomCardValue > rightCardValue
-                    {
-                        cardNameString2 = player2CardsArray[0]
-                    }
-                    else
-                    {
-                        if tempArraySpade.count > 0
-                        {
-                            let checkLowCardString = tempArraySpade[0]
-                            let nonDigits = CharacterSet.decimalDigits.inverted
-                            let lowCardValue = Int(checkLowCardString.trimmingCharacters(in: nonDigits)) ?? 0
-                            
-                            if lowCardValue > leftCardValue && lowCardValue > bottomCardValue && lowCardValue > rightCardValue
-                            {
-                                cardNameString2 = tempArraySpade[0]
-                                spadesBrokenDisplay()
-                            }
-                            else
-                            {
-                                cardNameString2 = tempArraySpade.last
-                                spadesBrokenDisplay()
-                            }
-                        }
-                        else
-                        {
-                            cardNameString2 = player2CardsArray[0]
-                        }
-                    }
-                }
-            }
+            let compPlayerValues = compPlayerSetup.compPlayer1Reacts(playerArrayPassed: player2CardsArray, startingSuitPassed: startingSuit, leftCardValuePassed: leftCardValue, topCardValuePassed: topCardValue, rightCardValuePassed: rightCardValue, bottomCardValuePassed: bottomCardValue, compPlayerGoingPassed: compPlayerGoing)
+            cardNameString2 = compPlayerValues
             
             let nonDigits = CharacterSet.decimalDigits.inverted
             topCardValue = Int(cardNameString2!.trimmingCharacters(in: nonDigits)) ?? 0
@@ -2199,103 +1689,10 @@ class GameScreen: UIViewController {
             // Remove card from array
             player2CardsArray.removeAll { $0 as AnyObject === cardNameString2 as AnyObject }
         }
-        else //Going Order 3
+        else
         {
-            if startingSuit!.hasPrefix("Club")
-            {
-                tempArray = tempArrayClub
-            }
-            else if startingSuit!.hasPrefix("Diamond")
-            {
-                tempArray = tempArrayDiamond
-            }
-            else if startingSuit!.hasPrefix("Heart")
-            {
-                tempArray = tempArrayHeart
-            }
-            else
-            {
-                tempArray = tempArraySpade
-            }
-
-            if startingSuit!.hasPrefix("Spade")
-            {
-                if tempArray.count > 0
-                {
-                    let checkHighCardString = tempArray.last
-                    let nonDigits = CharacterSet.decimalDigits.inverted
-                    let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
-                    
-                    if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > leftCardValue
-                    {
-                        cardNameString3 = tempArray.last
-                    }
-                    else
-                    {
-                        cardNameString3 = tempArray[0]
-                    }
-                }
-                else
-                {
-                    cardNameString3 = player3CardsArray[0]
-                }
-            }
-            else
-            {
-                if tempArray.count > 0
-                {
-                    if leftCardValue > topCardValue && leftCardValue > bottomCardValue
-                    {
-                        cardNameString3 = tempArray[0]
-                    }
-                    else
-                    {
-                        let checkHighCardString = tempArray.last
-                        let nonDigits = CharacterSet.decimalDigits.inverted
-                        let highCardValue = Int(checkHighCardString!.trimmingCharacters(in: nonDigits)) ?? 0
-                        
-                        if highCardValue > topCardValue && highCardValue > bottomCardValue && highCardValue > leftCardValue
-                        {
-                            cardNameString3 = tempArray.last
-                        }
-                        else
-                        {
-                            cardNameString3 = tempArray[0]
-                        }
-                    }
-                }
-                else
-                {
-                    if leftCardValue > topCardValue && leftCardValue > bottomCardValue
-                    {
-                        cardNameString3 = player3CardsArray[0]
-                    }
-                    else
-                    {
-                        if tempArraySpade.count > 0
-                        {
-                            let checkLowCardString = tempArraySpade[0]
-                            let nonDigits = CharacterSet.decimalDigits.inverted
-                            let lowCardValue = Int(checkLowCardString.trimmingCharacters(in: nonDigits)) ?? 0
-                            
-                            if lowCardValue > topCardValue && lowCardValue > bottomCardValue && lowCardValue > leftCardValue
-                            {
-                                cardNameString3 = tempArraySpade[0]
-                                spadesBrokenDisplay()
-                            }
-                            else
-                            {
-                                cardNameString3 = tempArraySpade.last
-                                spadesBrokenDisplay()
-                            }
-                        }
-                        else
-                        {
-                            cardNameString3 = player3CardsArray[0]
-                        }
-                    }
-                }
-            }
+            let compPlayerValues = compPlayerSetup.compPlayer1Reacts(playerArrayPassed: player3CardsArray, startingSuitPassed: startingSuit, leftCardValuePassed: leftCardValue, topCardValuePassed: topCardValue, rightCardValuePassed: rightCardValue, bottomCardValuePassed: bottomCardValue, compPlayerGoingPassed: compPlayerGoing)
+            cardNameString3 = compPlayerValues
             
             let nonDigits = CharacterSet.decimalDigits.inverted
             rightCardValue = Int(cardNameString3!.trimmingCharacters(in: nonDigits)) ?? 0
@@ -2305,6 +1702,7 @@ class GameScreen: UIViewController {
             // Remove card from array
             player3CardsArray.removeAll { $0 as AnyObject === cardNameString3 as AnyObject }
         }
+        
         let delayInSeconds = 1.0
         let popTime = DispatchTime.now() + delayInSeconds
         DispatchQueue.main.asyncAfter(deadline: popTime) { [self] in
@@ -2579,7 +1977,47 @@ class GameScreen: UIViewController {
         print("Home Button Clicked")
         view.window?.rootViewController?.dismiss(animated: false, completion: nil)
     }
+    
+    @IBAction func quitButton(_ sender: UIButton)
+    {
+        print("Quit Button Clicked")
+        view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func infoButton(_ sender: UIButton)
+    {
+        print("Info Button Clicked")
+        
+        let alertVC = UIAlertController(title: "", message: "", preferredStyle: .alert)
 
-	
+            // Title String
+            let titleString = NSMutableAttributedString(string: "Game Rules")
+            titleString.addAttribute(.font, value: UIFont(name: "AvenirNext-Bold", size: 14.0)!, range: NSRange(location: 0, length: titleString.length))
+            titleString.addAttribute(.foregroundColor, value: UIColor.gray, range: NSRange(location: 0, length: titleString.length))
+            alertVC.setValue(titleString, forKey: "attributedTitle")
+
+            // Message String
+            let messageString = NSMutableAttributedString(string: """
+            Begin:
+
+            All players begin with their lowest club. If you have no clubs you can throw any card other than spades.
+
+            Game:
+
+            Your partner is the player across from you. The winner of the book begins the next hand. When the first card is played all remaining players must follow with the same suit. If you have no remaining cards of that suit you can break spades or throw off. The first team to 7 books wins the game.
+
+            Breaking Spades:
+
+            Spades can be broken if you have no remaining other suits or if you don't have the suit of the first card played. Spades can't be broken on the first hand.
+            """)
+            messageString.addAttribute(.font, value: UIFont(name: "AvenirNext-Regular", size: 14.0)!, range: NSRange(location: 0, length: messageString.length))
+            messageString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: messageString.length))
+            alertVC.setValue(messageString, forKey: "attributedMessage")
+
+            let okAction = UIAlertAction(title: NSLocalizedString("Done", comment: "OK action"), style: .default, handler: { _ in })
+            alertVC.addAction(okAction)
+            present(alertVC, animated: true, completion: nil)
+    }
+
 }
 
