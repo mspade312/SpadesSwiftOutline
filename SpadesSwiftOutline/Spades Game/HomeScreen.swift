@@ -17,6 +17,7 @@ class HomeScreen: UITableViewController
     var profileNameString: String = " "
     var profileLevelString: String = " "
     var profileLevelProgressString: String = " "
+    var avatarNameString: String = " "
 
     var prefs: UserDefaults?
 
@@ -37,6 +38,7 @@ class HomeScreen: UITableViewController
     @IBOutlet weak var profileView: UIView?
     @IBOutlet weak var profileNameLabel: UILabel?
     @IBOutlet weak var profileLevelLabel: UILabel?
+    @IBOutlet weak var profileAvatar: UIImageView?
 
 
     // MARK: - Methods
@@ -84,6 +86,19 @@ class HomeScreen: UITableViewController
             profileLevelProgressString = levelProgressString!
         }
         profileLevelLabel?.text = profileLevelString + profileLevelProgressString
+        
+        //Setup Avatar Photo
+        let avatarString = prefs?.string(forKey: "avatar")
+        if avatarString == nil
+        {
+            avatarNameString = "pic6"
+        }
+        else
+        {
+            avatarNameString = avatarString!
+        }
+        let avatarImage = UIImage(named: avatarNameString)
+        profileAvatar?.image = avatarImage
         
         //Setup Coin Amount
         

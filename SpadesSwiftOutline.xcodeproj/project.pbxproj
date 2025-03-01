@@ -20,10 +20,7 @@
 		C9EC3ACA2CAE3904000E7468 /* PlayerSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AC92CAE3904000E7468 /* PlayerSelect.swift */; };
 		C9EC3ACD2CAE391D000E7468 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3ACC2CAE391D000E7468 /* GameScreen.swift */; };
 		C9EC3AD02CAE3934000E7468 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3ACF2CAE3934000E7468 /* GameOverScreen.swift */; };
-		C9EC3AD42CAE3988000E7468 /* PlayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AD32CAE3988000E7468 /* PlayerScreen.swift */; };
 		C9EC3AD82CAE3996000E7468 /* AvatarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AD72CAE3996000E7468 /* AvatarScreen.swift */; };
-		C9EC3ADB2CAE39AC000E7468 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3ADA2CAE39AC000E7468 /* SettingsScreen.swift */; };
-		C9EC3ADE2CAE39E7000E7468 /* AchievementScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3ADD2CAE39E7000E7468 /* AchievementScreen.swift */; };
 		C9EC3AE22CAE3A2F000E7468 /* ComputerPlayerProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AE12CAE3A2F000E7468 /* ComputerPlayerProfiles.swift */; };
 		C9EC3AE62CAE3AF5000E7468 /* CardSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AE52CAE3AF5000E7468 /* CardSetup.swift */; };
 		C9EC3AE92CAE3B24000E7468 /* PlayerStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC3AE82CAE3B24000E7468 /* PlayerStats.swift */; };
@@ -49,10 +46,7 @@
 		C9EC3AC92CAE3904000E7468 /* PlayerSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSelect.swift; sourceTree = "<group>"; };
 		C9EC3ACC2CAE391D000E7468 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		C9EC3ACF2CAE3934000E7468 /* GameOverScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
-		C9EC3AD32CAE3988000E7468 /* PlayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScreen.swift; sourceTree = "<group>"; };
 		C9EC3AD72CAE3996000E7468 /* AvatarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarScreen.swift; sourceTree = "<group>"; };
-		C9EC3ADA2CAE39AC000E7468 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
-		C9EC3ADD2CAE39E7000E7468 /* AchievementScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementScreen.swift; sourceTree = "<group>"; };
 		C9EC3AE12CAE3A2F000E7468 /* ComputerPlayerProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerPlayerProfiles.swift; sourceTree = "<group>"; };
 		C9EC3AE52CAE3AF5000E7468 /* CardSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetup.swift; sourceTree = "<group>"; };
 		C9EC3AE82CAE3B24000E7468 /* PlayerStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStats.swift; sourceTree = "<group>"; };
@@ -122,8 +116,6 @@
 				C9EC3AC92CAE3904000E7468 /* PlayerSelect.swift */,
 				C9EC3ACC2CAE391D000E7468 /* GameScreen.swift */,
 				C9EC3ACF2CAE3934000E7468 /* GameOverScreen.swift */,
-				C93FA74C2D663DE8002666FC /* ProfileScreen.swift */,
-				C93FA74F2D663DF8002666FC /* SettingScreen.swift */,
 			);
 			path = "Spades Game";
 			sourceTree = "<group>";
@@ -131,10 +123,9 @@
 		C9EC3AD22CAE3941000E7468 /* Menu Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C9EC3AD32CAE3988000E7468 /* PlayerScreen.swift */,
 				C9EC3AD72CAE3996000E7468 /* AvatarScreen.swift */,
-				C9EC3ADA2CAE39AC000E7468 /* SettingsScreen.swift */,
-				C9EC3ADD2CAE39E7000E7468 /* AchievementScreen.swift */,
+				C93FA74C2D663DE8002666FC /* ProfileScreen.swift */,
+				C93FA74F2D663DF8002666FC /* SettingScreen.swift */,
 			);
 			path = "Menu Screens";
 			sourceTree = "<group>";
@@ -230,17 +221,14 @@
 				C9EC3AE22CAE3A2F000E7468 /* ComputerPlayerProfiles.swift in Sources */,
 				C93FA7502D663DF8002666FC /* SettingScreen.swift in Sources */,
 				C9EC3AE62CAE3AF5000E7468 /* CardSetup.swift in Sources */,
-				C9EC3AD42CAE3988000E7468 /* PlayerScreen.swift in Sources */,
 				C9EC3ACA2CAE3904000E7468 /* PlayerSelect.swift in Sources */,
 				C9EC3AB42CAE3890000E7468 /* ViewController.swift in Sources */,
 				C9EC3AE92CAE3B24000E7468 /* PlayerStats.swift in Sources */,
-				C9EC3ADE2CAE39E7000E7468 /* AchievementScreen.swift in Sources */,
 				C9EC3AF02CB0BABF000E7468 /* PartnerSetup.swift in Sources */,
 				C9EC3AD02CAE3934000E7468 /* GameOverScreen.swift in Sources */,
 				C93FA74D2D663DE8002666FC /* ProfileScreen.swift in Sources */,
 				C9EC3AEC2CB0B618000E7468 /* ViewSetup.swift in Sources */,
 				C9EC3AB02CAE3890000E7468 /* AppDelegate.swift in Sources */,
-				C9EC3ADB2CAE39AC000E7468 /* SettingsScreen.swift in Sources */,
 				C9EC3AB22CAE3890000E7468 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
