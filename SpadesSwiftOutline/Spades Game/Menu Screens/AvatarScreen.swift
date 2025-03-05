@@ -10,6 +10,7 @@ import UIKit
 class AvatarScreen: UITableViewController
 {
     // MARK: - Properties
+    let prefs = UserDefaults.standard
 
     // MARK: - IBOutlets
     @IBOutlet weak var avatar1: UIButton?
@@ -40,6 +41,11 @@ class AvatarScreen: UITableViewController
         super.viewDidLoad()
     }
     
+    func cancelAction()
+    {
+        presentingViewController?.dismiss(animated: true)
+    }
+    
     // MARK: - User Actions
     @IBAction func startSelected(sender: UIButton)
     {
@@ -48,22 +54,28 @@ class AvatarScreen: UITableViewController
         {
         case avatar1:
         print("Avatar 1 Selected")
+            prefs.set("pic1", forKey: "avatar")
             
         case avatar2:
         print("Avatar 2 Selected")
-            
+            prefs.set("pic2", forKey: "avatar")
+
         case avatar3:
         print("Avatar 3 Selected")
-            
+            prefs.set("pic3", forKey: "avatar")
+
         case avatar4:
         print("Avatar 4 Selected")
-        
+            prefs.set("pic4", forKey: "avatar")
+
         case avatar5:
         print("Avatar 5 Selected")
-            
+            prefs.set("pic5", forKey: "avatar")
+
         case avatar6:
         print("Avatar 6 Selected")
-            
+            prefs.set("pic6", forKey: "avatar")
+
         case avatar7:
         print("Avatar 7 Selected")
             
@@ -109,10 +121,12 @@ class AvatarScreen: UITableViewController
         default:
             break
         }
+        cancelAction()
+
     }
     
     @IBAction func cancel(_ sender: UIButton)
     {
-        presentingViewController?.dismiss(animated: true)
+        cancelAction()
     }
 }

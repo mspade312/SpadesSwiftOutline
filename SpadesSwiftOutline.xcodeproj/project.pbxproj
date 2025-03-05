@@ -94,7 +94,6 @@
 		C9EC3AAE2CAE3890000E7468 /* SpadesSwiftOutline */ = {
 			isa = PBXGroup;
 			children = (
-				C9EC3AD22CAE3941000E7468 /* Menu Screens */,
 				C9EC3AC42CAE38C3000E7468 /* Spades Game */,
 				C9EC3AAF2CAE3890000E7468 /* AppDelegate.swift */,
 				C9EC3AB12CAE3890000E7468 /* SceneDelegate.swift */,
@@ -111,6 +110,7 @@
 		C9EC3AC42CAE38C3000E7468 /* Spades Game */ = {
 			isa = PBXGroup;
 			children = (
+				C9EC3AD22CAE3941000E7468 /* Menu Screens */,
 				C9EC3AE02CAE39F4000E7468 /* Game Setup */,
 				C9EC3AC52CAE38EE000E7468 /* HomeScreen.swift */,
 				C9EC3AC92CAE3904000E7468 /* PlayerSelect.swift */,

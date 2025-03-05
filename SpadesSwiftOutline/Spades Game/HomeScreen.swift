@@ -19,7 +19,7 @@ class HomeScreen: UITableViewController
     var profileLevelProgressString: String = " "
     var avatarNameString: String = " "
 
-    var prefs: UserDefaults?
+    let prefs = UserDefaults.standard
 
     // MARK: - IBOutlets
     
@@ -55,7 +55,7 @@ class HomeScreen: UITableViewController
         super.viewWillAppear(animated)
     
         //Setup Profile Name
-        let nameString = prefs?.string(forKey: "profileName")
+        let nameString = prefs.string(forKey: "profileName")
         if nameString == nil
         {
             profileNameString = "New Player"
@@ -67,7 +67,7 @@ class HomeScreen: UITableViewController
         profileNameLabel?.text = profileNameString
         
         //Setup Profile Level
-        let levelString = prefs?.string(forKey: "profileLevel")
+        let levelString = prefs.string(forKey: "profileLevel")
         if levelString == nil
         {
             profileLevelString = "Level 1 :"
@@ -76,7 +76,7 @@ class HomeScreen: UITableViewController
         {
             profileLevelString = levelString!
         }
-        let levelProgressString = prefs?.string(forKey: "profileLevelProgress")
+        let levelProgressString = prefs.string(forKey: "profileLevelProgress")
         if levelProgressString == nil
         {
             profileLevelProgressString = " 0%"
@@ -88,10 +88,10 @@ class HomeScreen: UITableViewController
         profileLevelLabel?.text = profileLevelString + profileLevelProgressString
         
         //Setup Avatar Photo
-        let avatarString = prefs?.string(forKey: "avatar")
+        let avatarString = prefs.string(forKey: "avatar")
         if avatarString == nil
         {
-            avatarNameString = "pic6"
+            avatarNameString = "pic3"
         }
         else
         {
@@ -102,7 +102,7 @@ class HomeScreen: UITableViewController
         
         //Setup Coin Amount
         
-        let coinAmountString = prefs?.string(forKey: "coinAmountString")
+        let coinAmountString = prefs.string(forKey: "coinAmountString")
         if coinAmountString == nil
         {
             coinAmount = 1000
@@ -117,7 +117,7 @@ class HomeScreen: UITableViewController
         
         //Setup Energy Amount
         
-        let energyAmountString = prefs?.string(forKey: "energyAmountString")
+        let energyAmountString = prefs.string(forKey: "energyAmountString")
         if energyAmountString == nil
         {
             energyAmount = 100
@@ -130,7 +130,7 @@ class HomeScreen: UITableViewController
         energyTotal?.text = String(energyAmount)
         
         //Setup Energy Refresh
-        let startingTimeCheck = prefs?.string(forKey: "startingTime")
+        let startingTimeCheck = prefs.string(forKey: "startingTime")
         if startingTimeCheck == nil
         {
             print("Nil Check")
@@ -138,14 +138,14 @@ class HomeScreen: UITableViewController
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "MM/dd/yyyy HH:mm:ss"
             let firstStartingTime = dateFormat.string(from: Date())
-            UserDefaults.standard.setValue(firstStartingTime, forKey: "startingTime")
+            prefs.set(firstStartingTime, forKey: "startingTime")
         }
         
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "MM/dd/yyyy HH:mm:ss"
         let currentTime = dateFormat.string(from: Date())
-        let startingTime = UserDefaults.standard.value(forKey: "startingTime") as? String
-        print(startingTime)
+        let startingTime = prefs.string(forKey: "startingTime")
+        print(startingTime as Any)
         print(currentTime)
         minCalculation_backgroundtime(startingTime, forgroundTime: currentTime)
         
@@ -165,7 +165,8 @@ class HomeScreen: UITableViewController
         let dateDiff = lastDiff - todaysDiff
         let min = Int(dateDiff / 60)
         print(String(format: "Good to see you after %i minutes", min))
-        
+        prefs.set(currentTime, forKey: "startingTime")
+
         //Set Energy Amount
         if energyAmount < 60
         {

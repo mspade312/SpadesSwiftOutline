@@ -109,8 +109,8 @@ class GameScreen: UIViewController {
 	var cardOriginalFrame13: CGPoint = .zero
 	var cardOriginalFrameCollection : [CGPoint] = []
     
-	var prefs: UserDefaults!
-	
+    let prefs = UserDefaults.standard
+
     let cardDeckSetup = CardSetup()
     let gameAchievementSetup = GameAchievements()
 

@@ -11,8 +11,8 @@ class PlayerSelect: UITableViewController
 {
     // MARK: - Properties
    
-    var prefs: UserDefaults?
-    
+    let prefs = UserDefaults.standard
+
     // MARK: - IBOutlets
     
     @IBOutlet weak var winLabel1: UILabel?
@@ -40,18 +40,18 @@ class PlayerSelect: UITableViewController
     {
         super.viewWillAppear(animated)
 
-        var p1Wins = prefs?.string(forKey: "p1Wins")
-        var p1Losses = prefs?.string(forKey: "p1Losses")
-        var p2Wins = prefs?.string(forKey: "p2Wins")
-        var p2Losses = prefs?.string(forKey: "p2Losses")
-        var p3Wins = prefs?.string(forKey: "p3Wins")
-        var p3Losses = prefs?.string(forKey: "p3Losses")
-        var p4Wins = prefs?.string(forKey: "p4Wins")
-        var p4Losses = prefs?.string(forKey: "p4Losses")
-        var p5Wins = prefs?.string(forKey: "p5Wins")
-        var p5Losses = prefs?.string(forKey: "p5Losses")
-        var p6Wins = prefs?.string(forKey: "p6Wins")
-        var p6Losses = prefs?.string(forKey: "p6Losses")
+        var p1Wins = prefs.string(forKey: "p1Wins")
+        var p1Losses = prefs.string(forKey: "p1Losses")
+        var p2Wins = prefs.string(forKey: "p2Wins")
+        var p2Losses = prefs.string(forKey: "p2Losses")
+        var p3Wins = prefs.string(forKey: "p3Wins")
+        var p3Losses = prefs.string(forKey: "p3Losses")
+        var p4Wins = prefs.string(forKey: "p4Wins")
+        var p4Losses = prefs.string(forKey: "p4Losses")
+        var p5Wins = prefs.string(forKey: "p5Wins")
+        var p5Losses = prefs.string(forKey: "p5Losses")
+        var p6Wins = prefs.string(forKey: "p6Wins")
+        var p6Losses = prefs.string(forKey: "p6Losses")
         
         if p1Wins == nil
         {
@@ -122,32 +122,32 @@ class PlayerSelect: UITableViewController
     {
         if indexPath.row == 0
         {
-            UserDefaults.standard.setValue("partner1", forKey: "partner")
+            prefs.set("partner1", forKey: "partner")
             toGameScreen()
         }
         else if indexPath.row == 1
         {
-            UserDefaults.standard.setValue("partner2", forKey: "partner")
+            prefs.set("partner2", forKey: "partner")
             toGameScreen()
         }
         else if indexPath.row == 2
         {
-            UserDefaults.standard.setValue("partner3", forKey: "partner")
+            prefs.set("partner3", forKey: "partner")
             toGameScreen()
         }
         else if indexPath.row == 3
         {
-            UserDefaults.standard.setValue("partner4", forKey: "partner")
+            prefs.set("partner4", forKey: "partner")
             toGameScreen()
         }
         else if indexPath.row == 4
         {
-            UserDefaults.standard.setValue("partner5", forKey: "partner")
+            prefs.set("partner5", forKey: "partner")
             toGameScreen()
         }
         else
         {
-            UserDefaults.standard.setValue("partner6", forKey: "partner")
+            prefs.set("partner6", forKey: "partner")
             toGameScreen()
         }
     }

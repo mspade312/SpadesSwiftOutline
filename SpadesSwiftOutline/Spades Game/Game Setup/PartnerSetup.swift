@@ -11,8 +11,8 @@ import Foundation
 class PartnerSetup : UIViewController
 {
 	// MARK: - Properties
-	var prefs: UserDefaults?
-	
+    let prefs = UserDefaults.standard
+
 	
 	// MARK: - Methods
 	
@@ -27,7 +27,7 @@ class PartnerSetup : UIViewController
 		print("Partner Setup")
 
 		//Variables
-		let partnerString = prefs?.string(forKey: "partner")
+		let partnerString = prefs.string(forKey: "partner")
 		var randomPartnerArray = ["0", "1", "2", "3", "4", "5"]
 		let partnerArray = ["partner1", "partner2", "partner3", "partner4", "partner5", "partner6"]
 		let partnerNameArray = ["Mike", "Olga", "Abe", "Jamie", "Colin", "Tony"]
