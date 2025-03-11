@@ -18,6 +18,14 @@ class SettingScreen: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //Setup Background View Select
+        
+        //Setup Wild Card Select
+        
+        //Setup Misdeal
+        
+        //Setup Game Sounds
     }
     
     // MARK: - User Actions

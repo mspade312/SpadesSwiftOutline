@@ -17,6 +17,7 @@ class ProfileScreen: UITableViewController
     // MARK: - IBOutlets
     
     @IBOutlet weak var avatarSelect: UIButton?
+    @IBOutlet weak var playerNameTextView: UITextView?
 
     // MARK: - Methods
 
@@ -40,6 +41,20 @@ class ProfileScreen: UITableViewController
         }
         let avatarImage = UIImage(named: avatarNameString)
         avatarSelect?.setImage(avatarImage, for: .normal)
+        
+        //Setup Player Name
+        
+        //Get Current Level
+        
+        //Get Current XP
+        
+        //Get Total Wins
+        
+        //Get Total Losses
+        
+        //Add Total Wins And Losses To Get Total Games Played
+        
+        //Setup Progress Bar Based On XP Total Vs Left
     }
     
     // MARK: - User Actions
