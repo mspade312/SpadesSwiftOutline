@@ -2262,6 +2262,9 @@
                     <navigationItem key="navigationItem" id="gAL-qK-Tj1"/>
                     <connections>
                         <outlet property="avatarSelect" destination="Sjr-qs-6cz" id="ZnN-wM-vV4"/>
+                        <outlet property="currentLevelLabel" destination="unw-WF-gun" id="aiK-wK-d15"/>
+                        <outlet property="currentXPLabel" destination="zG2-tw-kzo" id="tUH-6a-m3Z"/>
+                        <outlet property="playerNameTextView" destination="PPJ-vS-tbI" id="Ycy-Lh-0MC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nN-Vp-tZq" userLabel="First Responder" sceneMemberID="firstResponder"/>

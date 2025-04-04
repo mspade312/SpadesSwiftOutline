@@ -67,25 +67,27 @@ class HomeScreen: UITableViewController
         profileNameLabel?.text = profileNameString
         
         //Setup Profile Level
-        let levelString = prefs.string(forKey: "profileLevel")
+        let levelString = prefs.string(forKey: "currentLevel")
         if levelString == nil
         {
-            profileLevelString = "Level 1 :"
+            profileLevelString = "Level 1"
+			prefs.set(profileLevelString, forKey: "currentLevel")
         }
         else
         {
             profileLevelString = levelString!
         }
-        let levelProgressString = prefs.string(forKey: "profileLevelProgress")
+        let levelProgressString = prefs.string(forKey: "currentXP")
         if levelProgressString == nil
         {
-            profileLevelProgressString = " 0%"
+            profileLevelProgressString = "0/10"
+			prefs.set(profileLevelProgressString, forKey: "currentXP")
         }
         else
         {
             profileLevelProgressString = levelProgressString!
         }
-        profileLevelLabel?.text = profileLevelString + profileLevelProgressString
+        profileLevelLabel?.text = profileLevelString + " : " + profileLevelProgressString
         
         //Setup Avatar Photo
         let avatarString = prefs.string(forKey: "avatar")
@@ -106,6 +108,8 @@ class HomeScreen: UITableViewController
         if coinAmountString == nil
         {
             coinAmount = 1000
+			let coinAmountString = String(coinAmount)
+			prefs.set(coinAmountString, forKey: "coinAmountString")
         }
         else
         {
@@ -121,6 +125,8 @@ class HomeScreen: UITableViewController
         if energyAmountString == nil
         {
             energyAmount = 100
+			let energyAmountString = String(energyAmount)
+			prefs.set(energyAmountString, forKey: "energyAmountString")
         }
         else
         {
@@ -244,6 +250,8 @@ class HomeScreen: UITableViewController
         case start1:
         print("Start 1 Selected")
             energyAmount -= 1
+			coinAmount -= 10
+			prefs.set(1, forKey: "currentGameLevel")
             toPartnerScreen()
             
         case start2:
@@ -251,6 +259,8 @@ class HomeScreen: UITableViewController
             if playerLevel >= 2
             {
                 energyAmount -= 2
+				coinAmount -= 20
+				prefs.set(2, forKey: "currentGameLevel")
                 toPartnerScreen()
             }
             
@@ -259,6 +269,8 @@ class HomeScreen: UITableViewController
             if playerLevel >= 5
             {
                 energyAmount -= 5
+				coinAmount -= 50
+				prefs.set(3, forKey: "currentGameLevel")
                 toPartnerScreen()
             }
             
@@ -267,6 +279,8 @@ class HomeScreen: UITableViewController
             if playerLevel >= 10
             {
                 energyAmount -= 10
+				coinAmount -= 100
+				prefs.set(4, forKey: "currentGameLevel")
                 toPartnerScreen()
             }
         
@@ -275,6 +289,8 @@ class HomeScreen: UITableViewController
             if playerLevel >= 20
             {
                 energyAmount -= 12
+				coinAmount -= 500
+				prefs.set(5, forKey: "currentGameLevel")
                 toPartnerScreen()
             }
             
@@ -283,6 +299,8 @@ class HomeScreen: UITableViewController
             if playerLevel >= 35
             {
                 energyAmount -= 15
+				coinAmount -= 1000
+				prefs.set(6, forKey: "currentGameLevel")
                 toPartnerScreen()
             }
             
@@ -291,6 +309,8 @@ class HomeScreen: UITableViewController
             if playerLevel >= 50
             {
                 energyAmount -= 20
+				coinAmount -= 10000
+				prefs.set(7, forKey: "currentGameLevel")
                 toPartnerScreen()
             }
             

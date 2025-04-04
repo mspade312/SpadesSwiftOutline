@@ -1475,6 +1475,70 @@ class GameScreen: UIViewController {
 	
 	func gameOver()
 	{
+		var earnedXP = 0
+		var earnedCoins = 0
+		var coinsSpent = 0
+		var xPMultiplyer = 0
+		var coinMultiplyer = 0
+
+		let currentLevel = prefs.integer(forKey: "currentLevel")
+		let currentXP = prefs.integer(forKey: "currentXP")
+		let currentCoins = prefs.integer(forKey: "coinAmountString")
+
+		let gameLevelString = prefs.integer(forKey: "currentGameLevel")
+		if gameLevelString == 1
+		{
+			earnedXP = 10
+			coinsSpent = 10
+			xPMultiplyer = 2
+			coinMultiplyer = 4
+		}
+		else if gameLevelString == 2
+		{
+			earnedXP = 20
+			coinsSpent = 20
+			xPMultiplyer = 3
+			coinMultiplyer = 4
+		}
+		else if gameLevelString == 3
+		{
+			earnedXP = 30
+			coinsSpent = 50
+			xPMultiplyer = 4
+			coinMultiplyer = 3
+		}
+		else if gameLevelString == 4
+		{
+			earnedXP = 40
+			coinsSpent = 100
+			xPMultiplyer = 5
+			coinMultiplyer = 3
+		}
+		else if gameLevelString == 5
+		{
+			earnedXP = 50
+			coinsSpent = 500
+			xPMultiplyer = 6
+			coinMultiplyer = 3
+		}
+		else if gameLevelString == 6
+		{
+			earnedXP = 75
+			coinsSpent = 1000
+			xPMultiplyer = 8
+			coinMultiplyer = 2
+		}
+		else if gameLevelString == 7
+		{
+			earnedXP = 10
+			coinsSpent = 10000
+			xPMultiplyer = 10
+			coinMultiplyer = 2
+		}
+		else
+		{
+		}
+
 		print("Game Over")
         if teamOneBooks == 7
         {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileScreen: UITableViewController
+class ProfileScreen: UITableViewController, UITextFieldDelegate
 {
     // MARK: - Properties
     
@@ -17,7 +17,9 @@ class ProfileScreen: UITableViewController
     // MARK: - IBOutlets
     
     @IBOutlet weak var avatarSelect: UIButton?
-    @IBOutlet weak var playerNameTextView: UITextView?
+	@IBOutlet weak var currentLevelLabel: UILabel?
+	@IBOutlet weak var currentXPLabel: UILabel?
+    @IBOutlet weak var playerNameTextView: UITextField?
 
     // MARK: - Methods
 
@@ -43,11 +45,42 @@ class ProfileScreen: UITableViewController
         avatarSelect?.setImage(avatarImage, for: .normal)
         
         //Setup Player Name
-        
+		
+		playerNameTextView?.delegate = self
+		let nameString = prefs.string(forKey: "profileName")
+		if nameString == nil
+		{
+			playerNameTextView?.text = "New Player"
+		}
+		else
+		{
+			playerNameTextView?.text = nameString!
+		}
+		
         //Get Current Level
-        
+		let levelString = prefs.string(forKey: "currentLevel")
+		if levelString == nil
+		{
+			currentLevelLabel?.text = "Level 1"
+			prefs.set(currentLevelLabel?.text, forKey: "currentLevel")
+		}
+		else
+		{
+			currentLevelLabel?.text = levelString!
+		}
+		
         //Get Current XP
-        
+		let currentXPString = prefs.string(forKey: "currentXP")
+		if currentXPString == nil
+		{
+			currentXPLabel?.text = "0/10"
+			prefs.set(currentXPLabel?.text, forKey: "currentXP")
+		}
+		else
+		{
+			currentXPLabel?.text = currentXPString!
+		}
+		
         //Get Total Wins
         
         //Get Total Losses
@@ -56,18 +89,25 @@ class ProfileScreen: UITableViewController
         
         //Setup Progress Bar Based On XP Total Vs Left
     }
+	
+	func saveTextName()
+	{
+		prefs.set(playerNameTextView?.text, forKey: "profileName")
+	}
     
     // MARK: - User Actions
     
     @IBAction func cancel(_ sender: UIButton)
     {
+		saveTextName()
         presentingViewController?.dismiss(animated: true)
     }
     
     @IBAction func selectAvatar(_ sender: UIButton)
     {
         print("Avatar Button Clicked")
-        
+		saveTextName()
+		
         var avatarSelected = AvatarScreen()
         avatarSelected = storyboard!.instantiateViewController(withIdentifier: "avatarScreen") as! AvatarScreen
         avatarSelected.modalPresentationStyle = UIModalPresentationStyle.fullScreen
