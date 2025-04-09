@@ -152,10 +152,10 @@ class GameScreen: UIViewController {
 	@IBOutlet weak var playerNameLabel1: UILabel?
 	@IBOutlet weak var playerNameLabel2: UILabel?
 	@IBOutlet weak var playerNameLabel3: UILabel?
-	@IBOutlet weak var winScoreLabel: UILabel?
-	@IBOutlet weak var booksTakenScoreLabel: UILabel?
-	@IBOutlet weak var achievementBonusScoreLabel: UILabel?
-	@IBOutlet weak var totalGamePointsScoreLabel: UILabel?
+	@IBOutlet weak var xpBonusLabel: UILabel?
+	@IBOutlet weak var coinBonusLabel: UILabel?
+	@IBOutlet weak var coinTotalLabel: UILabel?
+	@IBOutlet weak var xpTotalLabel: UILabel?
 	    
     @IBOutlet weak var gameOverView: UIView?
 
@@ -1478,12 +1478,16 @@ class GameScreen: UIViewController {
 		var earnedXP = 0
 		var earnedCoins = 0
 		var coinsSpent = 0
-		var xPMultiplyer = 0
-		var coinMultiplyer = 0
+		var xPMultiplyer = 1
+		var coinMultiplyer = 1
+		
+		var currentLevel = prefs.string(forKey: "currentLevel")
+		let currentXP = prefs.string(forKey: "currentXP")
+		let currentCoins = prefs.string(forKey: "coinAmountString")
 
-		let currentLevel = prefs.integer(forKey: "currentLevel")
-		let currentXP = prefs.integer(forKey: "currentXP")
-		let currentCoins = prefs.integer(forKey: "coinAmountString")
+		let nonDigits = CharacterSet.decimalDigits.inverted
+		var currentXPInt = Int(currentXP!.trimmingCharacters(in: nonDigits)) ?? 0
+		var currentCoinsInt = Int(currentCoins!.trimmingCharacters(in: nonDigits)) ?? 0
 
 		let gameLevelString = prefs.integer(forKey: "currentGameLevel")
 		if gameLevelString == 1
@@ -1530,7 +1534,7 @@ class GameScreen: UIViewController {
 		}
 		else if gameLevelString == 7
 		{
-			earnedXP = 10
+			earnedXP = 100
 			coinsSpent = 10000
 			xPMultiplyer = 10
 			coinMultiplyer = 2
@@ -1542,12 +1546,40 @@ class GameScreen: UIViewController {
 		print("Game Over")
         if teamOneBooks == 7
         {
-            print("Team One Wins!")
+            print("Your Team Loses")
+			
+			gameOverLabel?.text = "Your Team Loses"
+			
+			xPMultiplyer = 1
+			coinMultiplyer = 0
+			
+			xpBonusLabel?.text = "Game Won Bonus : " + String(xPMultiplyer) + "x"
+			coinBonusLabel?.text = "Coin Bonus : " + String(coinMultiplyer) + "x"
+			
+			earnedXP = earnedXP * xPMultiplyer
+			earnedCoins = coinsSpent * coinMultiplyer
         }
         else
         {
-            print("Team Two Wins!")
+            print("Your Team Wins!!!")
+			
+			gameOverLabel?.text = "Your Team Wins!!!"
+			xpBonusLabel?.text = "Game Won Bonus : " + String(xPMultiplyer) + "x"
+			coinBonusLabel?.text = "Coin Bonus : " + String(coinMultiplyer) + "x"
+			
+			earnedXP = earnedXP * xPMultiplyer
+			earnedCoins = coinsSpent * coinMultiplyer
         }
+		
+		xpTotalLabel?.text = "Total XP Earned : " + String(earnedXP)
+		coinTotalLabel?.text = "Total Coins Earned : " + String(earnedCoins)
+		
+		currentXPInt = currentXPInt + earnedXP
+		prefs.set(String(currentXPInt), forKey: "currentXP")
+		
+		currentCoinsInt = currentCoinsInt + earnedCoins
+		prefs.set(String(currentCoinsInt), forKey: "coinAmountString")
+		
         //Show Game Over Screen
         gameOverView?.isHidden = false
 	}
