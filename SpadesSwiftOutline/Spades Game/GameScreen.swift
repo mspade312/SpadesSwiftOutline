@@ -1475,20 +1475,24 @@ class GameScreen: UIViewController {
 	
 	func gameOver()
 	{
+		//Variables
 		var earnedXP = 0
 		var earnedCoins = 0
 		var coinsSpent = 0
 		var xPMultiplyer = 1
 		var coinMultiplyer = 1
 		
-		var currentLevel = prefs.string(forKey: "currentLevel")
+		let currentLevel = prefs.string(forKey: "currentLevel")
 		let currentXP = prefs.string(forKey: "currentXP")
 		let currentCoins = prefs.string(forKey: "coinAmountString")
 
 		let nonDigits = CharacterSet.decimalDigits.inverted
 		var currentXPInt = Int(currentXP!.trimmingCharacters(in: nonDigits)) ?? 0
 		var currentCoinsInt = Int(currentCoins!.trimmingCharacters(in: nonDigits)) ?? 0
-
+		var currentLevelInt = Int(currentLevel!.trimmingCharacters(in: nonDigits)) ?? 0
+		let maxLevelInt = currentLevelInt * currentLevelInt * 10
+		
+		//Setup Multiplyers
 		let gameLevelString = prefs.integer(forKey: "currentGameLevel")
 		if gameLevelString == 1
 		{
@@ -1543,6 +1547,7 @@ class GameScreen: UIViewController {
 		{
 		}
 
+		//Setup Game Over Screen
 		print("Game Over")
         if teamOneBooks == 7
         {
@@ -1574,9 +1579,19 @@ class GameScreen: UIViewController {
 		xpTotalLabel?.text = "Total XP Earned : " + String(earnedXP)
 		coinTotalLabel?.text = "Total Coins Earned : " + String(earnedCoins)
 		
+		//Update XP Amount
 		currentXPInt = currentXPInt + earnedXP
 		prefs.set(String(currentXPInt), forKey: "currentXP")
 		
+		//Check For New Level
+		if currentXPInt >= maxLevelInt
+		{
+			print("New Level!!!")
+			currentLevelInt += 1
+			prefs.set(String(currentLevelInt), forKey: "currentLevel")
+		}
+		
+		//Update Coin Amount
 		currentCoinsInt = currentCoinsInt + earnedCoins
 		prefs.set(String(currentCoinsInt), forKey: "coinAmountString")
 		
