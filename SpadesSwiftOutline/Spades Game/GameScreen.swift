@@ -397,6 +397,10 @@ class GameScreen: UIViewController {
                 startingSuit = playerGoingSetup.1
                 spadesBroken = playerGoingSetup.2
 				
+				// set position 1 card value
+				let nonDigits = CharacterSet.decimalDigits.inverted
+				leftCardValue = Int(cardNameString1!.trimmingCharacters(in: nonDigits)) ?? 0
+				
 				player1SelectedCard()
 				
 				// Remove card from array
@@ -440,7 +444,7 @@ class GameScreen: UIViewController {
 				// set position 1 card value
 				let nonDigits = CharacterSet.decimalDigits.inverted
 				leftCardValue = Int(cardNameString1!.trimmingCharacters(in: nonDigits)) ?? 0
-
+				
 				self.player1SelectedCard()
 
 				// remove card from array
@@ -492,6 +496,10 @@ class GameScreen: UIViewController {
                 cardSuitString2 = playerGoingSetup.0
                 startingSuit = playerGoingSetup.1
                 spadesBroken = playerGoingSetup.2
+				
+				// set position 1 card value
+				let nonDigits = CharacterSet.decimalDigits.inverted
+				topCardValue = Int(cardNameString2!.trimmingCharacters(in: nonDigits)) ?? 0
 				
 				player2SelectedCard()
 				
@@ -587,6 +595,10 @@ class GameScreen: UIViewController {
                 cardSuitString3 = playerGoingSetup.0
                 startingSuit = playerGoingSetup.1
                 spadesBroken = playerGoingSetup.2
+				
+				// set position 1 card value
+				let nonDigits = CharacterSet.decimalDigits.inverted
+				rightCardValue = Int(cardNameString3!.trimmingCharacters(in: nonDigits)) ?? 0
 				
 				player3SelectedCard()
 				
@@ -1149,6 +1161,7 @@ class GameScreen: UIViewController {
             }
             else
             {
+				print("Player One No Club")
                 leftCardValue = 0;
             }
             if cardNameString2!.hasPrefix("Club") || cardNameString2!.hasPrefix("Spade")
@@ -1180,6 +1193,7 @@ class GameScreen: UIViewController {
             }
             else
             {
+				print("Player One No Diamond")
                 leftCardValue = 0;
             }
             if cardNameString2!.hasPrefix("Diamond") || cardNameString2!.hasPrefix("Spade")
@@ -1211,6 +1225,7 @@ class GameScreen: UIViewController {
             }
             else
             {
+				print("Player One No Heart")
                 leftCardValue = 0;
             }
             if cardNameString2!.hasPrefix("Heart") || cardNameString2!.hasPrefix("Spade")
@@ -1242,6 +1257,7 @@ class GameScreen: UIViewController {
             }
             else
             {
+				print("Player One No Spade")
                 leftCardValue = 0;
             }
             if cardNameString2!.hasPrefix("Spade")
