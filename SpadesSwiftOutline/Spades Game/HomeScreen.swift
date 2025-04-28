@@ -252,6 +252,8 @@ class HomeScreen: UITableViewController
             energyAmount -= 1
 			coinAmount -= 10
 			prefs.set(1, forKey: "currentGameLevel")
+			prefs.set(String(energyAmount), forKey: "energyAmountString")
+			prefs.set(String(coinAmount), forKey: "coinAmountString")
             toPartnerScreen()
             
         case start2:
@@ -261,6 +263,8 @@ class HomeScreen: UITableViewController
                 energyAmount -= 2
 				coinAmount -= 20
 				prefs.set(2, forKey: "currentGameLevel")
+				prefs.set(String(energyAmount), forKey: "energyAmountString")
+				prefs.set(String(coinAmount), forKey: "coinAmountString")
                 toPartnerScreen()
             }
             
@@ -271,6 +275,8 @@ class HomeScreen: UITableViewController
                 energyAmount -= 5
 				coinAmount -= 50
 				prefs.set(3, forKey: "currentGameLevel")
+				prefs.set(String(energyAmount), forKey: "energyAmountString")
+				prefs.set(String(coinAmount), forKey: "coinAmountString")
                 toPartnerScreen()
             }
             
@@ -281,6 +287,8 @@ class HomeScreen: UITableViewController
                 energyAmount -= 10
 				coinAmount -= 100
 				prefs.set(4, forKey: "currentGameLevel")
+				prefs.set(String(energyAmount), forKey: "energyAmountString")
+				prefs.set(String(coinAmount), forKey: "coinAmountString")
                 toPartnerScreen()
             }
         
@@ -291,6 +299,8 @@ class HomeScreen: UITableViewController
                 energyAmount -= 12
 				coinAmount -= 500
 				prefs.set(5, forKey: "currentGameLevel")
+				prefs.set(String(energyAmount), forKey: "energyAmountString")
+				prefs.set(String(coinAmount), forKey: "coinAmountString")
                 toPartnerScreen()
             }
             
@@ -301,6 +311,8 @@ class HomeScreen: UITableViewController
                 energyAmount -= 15
 				coinAmount -= 1000
 				prefs.set(6, forKey: "currentGameLevel")
+				prefs.set(String(energyAmount), forKey: "energyAmountString")
+				prefs.set(String(coinAmount), forKey: "coinAmountString")
                 toPartnerScreen()
             }
             
@@ -311,6 +323,8 @@ class HomeScreen: UITableViewController
                 energyAmount -= 20
 				coinAmount -= 10000
 				prefs.set(7, forKey: "currentGameLevel")
+				prefs.set(String(energyAmount), forKey: "energyAmountString")
+				prefs.set(String(coinAmount), forKey: "coinAmountString")
                 toPartnerScreen()
             }
             
