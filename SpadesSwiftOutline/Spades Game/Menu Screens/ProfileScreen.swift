@@ -20,6 +20,7 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 	@IBOutlet weak var currentLevelLabel: UILabel?
 	@IBOutlet weak var currentXPLabel: UILabel?
     @IBOutlet weak var playerNameTextView: UITextField?
+	@IBOutlet weak var xpProgressBar: UIProgressView?
 
     // MARK: - Methods
 
@@ -66,8 +67,22 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 		}
 		else
 		{
-			currentLevelLabel?.text = levelString!
+			currentLevelLabel?.text = "Level " + levelString!
 		}
+		
+		//Set Progress Bar View
+		xpProgressBar?.progress = 0.0
+		xpProgressBar?.layer.cornerRadius = 10
+		xpProgressBar?.clipsToBounds = true
+		xpProgressBar?.layer.sublayers![1].cornerRadius = 10
+		xpProgressBar?.subviews[1].clipsToBounds = true
+		xpProgressBar?.transform = (xpProgressBar?.transform.scaledBy(x: 1, y: 8))!
+		xpProgressBar?.progressTintColor = UIColor.blue
+		
+		//Set Max XP String
+		let nonDigits = CharacterSet.decimalDigits.inverted
+		let currentLevelInt = Float(levelString!.trimmingCharacters(in: nonDigits)) ?? 0
+		let maxLevelInt = currentLevelInt * currentLevelInt * 10
 		
         //Get Current XP
 		let currentXPString = prefs.string(forKey: "currentXP")
@@ -75,10 +90,14 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 		{
 			currentXPLabel?.text = "0/10"
 			prefs.set(currentXPLabel?.text, forKey: "currentXP")
+			
+			xpProgressBar?.progress = 0.0
 		}
 		else
 		{
-			currentXPLabel?.text = currentXPString!
+			currentXPLabel?.text = currentXPString! + "/" + String(Int(maxLevelInt))
+			let currentXPInt = Float(currentXPString!.trimmingCharacters(in: nonDigits)) ?? 0
+			xpProgressBar?.progress = currentXPInt / maxLevelInt
 		}
 		
         //Get Total Wins

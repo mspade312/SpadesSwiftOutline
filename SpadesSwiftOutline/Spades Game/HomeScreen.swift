@@ -117,24 +117,22 @@ class HomeScreen: UITableViewController
             coinAmount = Int(coinAmountString!.trimmingCharacters(in: nonDigits)) ?? 0
         }
         coinsTotal?.text = String(coinAmount)
-
-        
-        //Setup Energy Amount
-        
-        let energyAmountString = prefs.string(forKey: "energyAmountString")
-        if energyAmountString == nil
-        {
-            energyAmount = 100
+		
+		//Setup Energy Amount
+		let energyAmountString = prefs.string(forKey: "energyAmountString")
+		if energyAmountString == nil
+		{
+			energyAmount = 100
 			let energyAmountString = String(energyAmount)
 			prefs.set(energyAmountString, forKey: "energyAmountString")
-        }
-        else
-        {
-            let nonDigits = CharacterSet.decimalDigits.inverted
-            energyAmount = Int(energyAmountString!.trimmingCharacters(in: nonDigits)) ?? 0
-        }
-        energyTotal?.text = String(energyAmount)
-        
+		}
+		else
+		{
+			let nonDigits = CharacterSet.decimalDigits.inverted
+			energyAmount = Int(energyAmountString!.trimmingCharacters(in: nonDigits)) ?? 0
+		}
+		energyTotal?.text = String(energyAmount)
+		
         //Setup Energy Refresh
         let startingTimeCheck = prefs.string(forKey: "startingTime")
         if startingTimeCheck == nil
@@ -173,10 +171,29 @@ class HomeScreen: UITableViewController
         print(String(format: "Good to see you after %i minutes", min))
         prefs.set(currentTime, forKey: "startingTime")
 
+		//Take min passed, get missing energy amount, divide min by refil energy rate, add missing energy up until max allowed
+		
+		var minPassed = min
+		let energyMissing = 100 - energyAmount
+		
+		if energyAmount < 100
+		{
+			for var i in 1...energyMissing
+			{
+				if (minPassed / 2) > 1
+				{
+					energyAmount = energyAmount + 1
+					minPassed = minPassed / 2
+				}
+				i = i + 1
+			}
+			prefs.set(Int(energyAmount), forKey: "energyAmountString")
+		}
         //Set Energy Amount
-        if energyAmount < 60
+        if energyAmount < 100
         {
-            for i in 1..<60 - energyAmount
+			
+            for i in 1..<100 - energyAmount
             {
                 energyAmount += i
             }
