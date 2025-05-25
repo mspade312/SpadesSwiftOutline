@@ -806,7 +806,7 @@
         <scene sceneID="gbq-G8-tLV">
             <objects>
                 <tableViewController storyboardIdentifier="homeScreen" id="Hfh-AL-OXl" customClass="HomeScreen" customModule="SpadesSwiftOutline" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bnw-0o-DqS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bnw-0o-DqS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1350,6 +1350,28 @@
                         <outlet property="start6" destination="xCL-HP-q1e" id="GPd-TO-V8M"/>
                         <outlet property="start7" destination="4RV-Ns-Bck" id="JEQ-S1-oPK"/>
                         <outlet property="startRandom" destination="16l-b5-MLD" id="6kc-ql-Ha1"/>
+                        <outlet property="view1" destination="YL9-U8-ZOg" id="feP-Zc-L6d"/>
+                        <outlet property="view2" destination="mhY-Ix-GP4" id="LiW-j1-zrf"/>
+                        <outlet property="view3" destination="Hqf-Mt-xYQ" id="AX9-YP-XtU"/>
+                        <outlet property="view4" destination="dwV-dr-dQd" id="xcm-rH-BU4"/>
+                        <outlet property="view5" destination="2ts-of-sv2" id="YLv-20-zWY"/>
+                        <outlet property="view6" destination="ZN5-p7-H6N" id="UgR-Pi-Wnr"/>
+                        <outlet property="view7" destination="TyJ-hY-i0n" id="bTD-HQ-MvN"/>
+                        <outletCollection property="startButtonCollection" destination="16l-b5-MLD" collectionClass="NSMutableArray" id="YqK-Cp-j5e"/>
+                        <outletCollection property="startButtonCollection" destination="T0q-YZ-ufA" collectionClass="NSMutableArray" id="cmm-Zi-cP6"/>
+                        <outletCollection property="startButtonCollection" destination="BWc-Vu-30N" collectionClass="NSMutableArray" id="VEX-HF-bRh"/>
+                        <outletCollection property="startButtonCollection" destination="VxJ-0g-JAA" collectionClass="NSMutableArray" id="CuR-CE-V61"/>
+                        <outletCollection property="startButtonCollection" destination="wOO-6l-loL" collectionClass="NSMutableArray" id="o93-Ed-Oif"/>
+                        <outletCollection property="startButtonCollection" destination="nRu-4x-r20" collectionClass="NSMutableArray" id="gTu-eD-DzP"/>
+                        <outletCollection property="startButtonCollection" destination="xCL-HP-q1e" collectionClass="NSMutableArray" id="dhT-4Q-LQA"/>
+                        <outletCollection property="startButtonCollection" destination="4RV-Ns-Bck" collectionClass="NSMutableArray" id="Lmh-sV-6cq"/>
+                        <outletCollection property="cellViewCollection" destination="YL9-U8-ZOg" collectionClass="NSMutableArray" id="zoa-Da-KRV"/>
+                        <outletCollection property="cellViewCollection" destination="mhY-Ix-GP4" collectionClass="NSMutableArray" id="zGA-li-fEq"/>
+                        <outletCollection property="cellViewCollection" destination="Hqf-Mt-xYQ" collectionClass="NSMutableArray" id="fHK-2p-XNj"/>
+                        <outletCollection property="cellViewCollection" destination="dwV-dr-dQd" collectionClass="NSMutableArray" id="cK2-f6-EOj"/>
+                        <outletCollection property="cellViewCollection" destination="2ts-of-sv2" collectionClass="NSMutableArray" id="rzD-RX-jLM"/>
+                        <outletCollection property="cellViewCollection" destination="ZN5-p7-H6N" collectionClass="NSMutableArray" id="LV9-Fh-poI"/>
+                        <outletCollection property="cellViewCollection" destination="TyJ-hY-i0n" collectionClass="NSMutableArray" id="RwK-rJ-yKF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ur-vU-2mr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -31,7 +31,17 @@ class HomeScreen: UITableViewController
     @IBOutlet weak var start6: UIButton?
     @IBOutlet weak var start7: UIButton?
     @IBOutlet weak var startRandom: UIButton?
- 
+	@IBOutlet var startButtonCollection: [UIButton]?
+	
+	@IBOutlet weak var view1: UIView?
+	@IBOutlet weak var view2: UIView?
+	@IBOutlet weak var view3: UIView?
+	@IBOutlet weak var view4: UIView?
+	@IBOutlet weak var view5: UIView?
+	@IBOutlet weak var view6: UIView?
+	@IBOutlet weak var view7: UIView?
+	@IBOutlet var cellViewCollection: [UIView]?
+
     @IBOutlet weak var coinsTotal: UILabel?
     @IBOutlet weak var energyTotal: UILabel?
     
@@ -48,6 +58,31 @@ class HomeScreen: UITableViewController
         super.viewDidLoad()
         profileView?.isUserInteractionEnabled = true
         
+		//Setup Cell View
+		for i in 0...6
+		{
+			let myView : UIView? = cellViewCollection?[i]
+			
+			//Start Button Setup
+			myView?.layer.cornerRadius = 5
+			myView?.layer.masksToBounds = false
+			myView?.layer.shadowOffset = CGSize(width: 2, height: 2)
+			myView?.layer.shadowColor = UIColor.black.cgColor
+			myView?.layer.shadowOpacity = 0.45
+		}
+		
+		//Setup Card View
+		for i in 0...7
+		{
+			let myButton : UIButton? = startButtonCollection?[i]
+			
+			//Start Button Setup
+			myButton?.layer.cornerRadius = 2
+			myButton?.layer.masksToBounds = false
+			myButton?.layer.shadowOffset = CGSize(width: 2, height: 2)
+			myButton?.layer.shadowColor = UIColor.black.cgColor
+			myButton?.layer.shadowOpacity = 0.35
+		}
     }
     
     override func viewWillAppear(_ animated: Bool)
