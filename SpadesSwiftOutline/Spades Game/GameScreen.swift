@@ -1565,6 +1565,13 @@ class GameScreen: UIViewController {
 
 		//Setup Game Over Screen
 		print("Game Over")
+		
+		//Game Stat Variables
+		let gameWonString = prefs.string(forKey: "gamesWon")
+		let gameLostString = prefs.string(forKey: "gamesLost")
+		let gamesWonInt = Int(gameWonString!.trimmingCharacters(in: nonDigits)) ?? 0
+		let gamesLostInt = Int(gameLostString!.trimmingCharacters(in: nonDigits)) ?? 0
+		
         if teamOneBooks == 7
         {
             print("Your Team Loses")
@@ -1579,6 +1586,17 @@ class GameScreen: UIViewController {
 			
 			earnedXP = earnedXP * xPMultiplyer
 			earnedCoins = coinsSpent * coinMultiplyer
+			
+			//Setup Games Lost
+			if gameWonString == nil || gameLostString == nil
+			{
+				prefs.set("1", forKey: "gamesLost")
+				prefs.set("0", forKey: "gamesWon")
+			}
+			else
+			{
+				prefs.set(String(gamesLostInt + 1), forKey: "gamesLost")
+			}
         }
         else
         {
@@ -1590,6 +1608,17 @@ class GameScreen: UIViewController {
 			
 			earnedXP = earnedXP * xPMultiplyer
 			earnedCoins = coinsSpent * coinMultiplyer
+			
+			//Setup Games Lost
+			if gameWonString == nil || gameLostString == nil
+			{
+				prefs.set("0", forKey: "gamesLost")
+				prefs.set("1", forKey: "gamesWon")
+			}
+			else
+			{
+				prefs.set(String(gamesWonInt + 1), forKey: "gamesWon")
+			}
         }
 		
 		xpTotalLabel?.text = "Total XP Earned : " + String(earnedXP)

@@ -21,6 +21,9 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 	@IBOutlet weak var currentXPLabel: UILabel?
     @IBOutlet weak var playerNameTextView: UITextField?
 	@IBOutlet weak var xpProgressBar: UIProgressView?
+	@IBOutlet weak var gamesWonLabel: UILabel?
+	@IBOutlet weak var gamesLostLabel: UILabel?
+	@IBOutlet weak var gamesTotalLabel: UILabel?
 
     // MARK: - Methods
 
@@ -100,13 +103,43 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 			xpProgressBar?.progress = currentXPInt / maxLevelInt
 		}
 		
-        //Get Total Wins
-        
+		//Get Current Level
+		var gameWonString = prefs.string(forKey: "gamesWon")
+		if gameWonString == nil
+		{
+			gamesWonLabel?.text = "Games Won : 0"
+			gameWonString = "0"
+			prefs.set(gameWonString, forKey: "gamesWon")
+		}
+		else
+		{
+			gamesWonLabel?.text = "Games Won : " + gameWonString!
+		}
         //Get Total Losses
+		var gameLostString = prefs.string(forKey: "gamesLost")
+		if gameLostString == nil
+		{
+			gamesLostLabel?.text = "Games Lost : 0"
+			gameLostString = "0"
+			prefs.set(gameLostString, forKey: "gamesLost")
+		}
+		else
+		{
+			gamesLostLabel?.text = "Games Lost : " + gameLostString!
+		}
+		//Get Total Wins
+		if gameWonString == nil || gameLostString == nil
+		{
+			gamesTotalLabel?.text = "Games Played : 0"
+		}
+		else
+		{
+			let gamesWonInt = Int(gameWonString!.trimmingCharacters(in: nonDigits)) ?? 0
+			let gamesLostInt = Int(gameLostString!.trimmingCharacters(in: nonDigits)) ?? 0
+			let gameTotalString = gamesWonInt + gamesLostInt
+			gamesTotalLabel?.text = "Games Played : " + String(gameTotalString)
+		}
         
-        //Add Total Wins And Losses To Get Total Games Played
-        
-        //Setup Progress Bar Based On XP Total Vs Left
     }
 	
 	func saveTextName()

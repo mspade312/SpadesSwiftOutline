@@ -2256,6 +2256,9 @@
                         <outlet property="avatarSelect" destination="Sjr-qs-6cz" id="ZnN-wM-vV4"/>
                         <outlet property="currentLevelLabel" destination="unw-WF-gun" id="aiK-wK-d15"/>
                         <outlet property="currentXPLabel" destination="zG2-tw-kzo" id="tUH-6a-m3Z"/>
+                        <outlet property="gamesLostLabel" destination="Y3k-nH-IBh" id="DQ2-0m-3Fh"/>
+                        <outlet property="gamesTotalLabel" destination="0ZM-Xw-Lk4" id="y95-hz-LN2"/>
+                        <outlet property="gamesWonLabel" destination="u7p-CT-aa9" id="T0L-5A-DBX"/>
                         <outlet property="playerNameTextView" destination="PPJ-vS-tbI" id="Ycy-Lh-0MC"/>
                         <outlet property="xpProgressBar" destination="aA7-Pr-jBd" id="qJT-LG-YWm"/>
                     </connections>
