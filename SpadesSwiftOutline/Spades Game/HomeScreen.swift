@@ -41,6 +41,15 @@ class HomeScreen: UITableViewController
 	@IBOutlet weak var view6: UIView?
 	@IBOutlet weak var view7: UIView?
 	@IBOutlet var cellViewCollection: [UIView]?
+	
+	@IBOutlet weak var image1: UIImageView?
+	@IBOutlet weak var image2: UIImageView?
+	@IBOutlet weak var image3: UIImageView?
+	@IBOutlet weak var image4: UIImageView?
+	@IBOutlet weak var image5: UIImageView?
+	@IBOutlet weak var image6: UIImageView?
+	@IBOutlet weak var image7: UIImageView?
+	@IBOutlet var imageViewCollection: [UIImageView]?
 
     @IBOutlet weak var coinsTotal: UILabel?
     @IBOutlet weak var energyTotal: UILabel?
@@ -71,13 +80,29 @@ class HomeScreen: UITableViewController
 			myView?.layer.shadowOpacity = 0.45
 		}
 		
+		//Setup Image View
+		for i in 0...6
+		{
+			let myImageView : UIImageView? = imageViewCollection?[i]
+			
+			//Start Button Setup
+			myImageView?.layer.cornerRadius = 5
+			myImageView?.layer.masksToBounds = false
+			myImageView?.layer.shadowOffset = CGSize(width: 2, height: 2)
+			myImageView?.layer.shadowColor = UIColor.black.cgColor
+			myImageView?.layer.shadowOpacity = 0.45
+			myImageView?.layer.borderWidth = 1.5
+			myImageView?.layer.borderColor = UIColor.lightGray.cgColor
+		}
+		
+		
 		//Setup Card View
 		for i in 0...7
 		{
 			let myButton : UIButton? = startButtonCollection?[i]
 			
 			//Start Button Setup
-			myButton?.layer.cornerRadius = 2
+			myButton?.layer.cornerRadius = 3
 			myButton?.layer.masksToBounds = false
 			myButton?.layer.shadowOffset = CGSize(width: 2, height: 2)
 			myButton?.layer.shadowColor = UIColor.black.cgColor
@@ -105,7 +130,7 @@ class HomeScreen: UITableViewController
         let levelString = prefs.string(forKey: "currentLevel")
         if levelString == nil
         {
-            profileLevelString = "Level 1"
+            profileLevelString = "1"
 			prefs.set(profileLevelString, forKey: "currentLevel")
         }
         else
@@ -115,14 +140,19 @@ class HomeScreen: UITableViewController
         let levelProgressString = prefs.string(forKey: "currentXP")
         if levelProgressString == nil
         {
-            profileLevelProgressString = "0/10"
+            profileLevelProgressString = "0"
 			prefs.set(profileLevelProgressString, forKey: "currentXP")
         }
         else
         {
             profileLevelProgressString = levelProgressString!
         }
-        profileLevelLabel?.text = profileLevelString + " : " + profileLevelProgressString
+		//Max Level String
+		let nonDigits = CharacterSet.decimalDigits.inverted
+		let currentLevelInt = Float(profileLevelString.trimmingCharacters(in: nonDigits)) ?? 0
+		let maxLevelInt = currentLevelInt * currentLevelInt * 10
+		
+        profileLevelLabel?.text = "Level " + profileLevelString + " : " + profileLevelProgressString + "/" + String(Int(maxLevelInt))
         
         //Setup Avatar Photo
         let avatarString = prefs.string(forKey: "avatar")
