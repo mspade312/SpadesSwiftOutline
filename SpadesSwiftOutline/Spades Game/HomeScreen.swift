@@ -42,6 +42,15 @@ class HomeScreen: UITableViewController
 	@IBOutlet weak var view7: UIView?
 	@IBOutlet var cellViewCollection: [UIView]?
 	
+	@IBOutlet weak var label1: UILabel?
+	@IBOutlet weak var label2: UILabel?
+	@IBOutlet weak var label3: UILabel?
+	@IBOutlet weak var label4: UILabel?
+	@IBOutlet weak var label5: UILabel?
+	@IBOutlet weak var label6: UILabel?
+	@IBOutlet weak var label7: UILabel?
+	@IBOutlet var titleLabelCollection: [UILabel]?
+	
 	@IBOutlet weak var image1: UIImageView?
 	@IBOutlet weak var image2: UIImageView?
 	@IBOutlet weak var image3: UIImageView?
@@ -72,12 +81,25 @@ class HomeScreen: UITableViewController
 		{
 			let myView : UIView? = cellViewCollection?[i]
 			
-			//Start Button Setup
-			myView?.layer.cornerRadius = 5
-			myView?.layer.masksToBounds = false
-			myView?.layer.shadowOffset = CGSize(width: 2, height: 2)
+			//Cell View Setup
+			myView?.layer.cornerRadius = 8
+			myView?.layer.masksToBounds = true
+			myView?.layer.shadowOffset = CGSize(width: 0, height: 1)
 			myView?.layer.shadowColor = UIColor.black.cgColor
-			myView?.layer.shadowOpacity = 0.45
+			myView?.layer.shadowOpacity = 0.55
+			myView?.layer.borderColor = UIColor.black.cgColor
+			myView?.layer.borderWidth = 0.35
+			
+			//Setup Cell Gradient
+			let colorTop =  UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 0.15).cgColor
+			let colorBottom = UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+			let gradientLayer = CAGradientLayer()
+			
+			gradientLayer.colors = [colorTop, colorBottom]
+			gradientLayer.locations = [0.0, 0.50]
+			gradientLayer.frame = self.view.bounds
+			
+			myView?.layer.insertSublayer(gradientLayer, at:0)
 		}
 		
 		//Setup Image View
@@ -85,14 +107,34 @@ class HomeScreen: UITableViewController
 		{
 			let myImageView : UIImageView? = imageViewCollection?[i]
 			
-			//Start Button Setup
-			myImageView?.layer.cornerRadius = 5
-			myImageView?.layer.masksToBounds = false
-			myImageView?.layer.shadowOffset = CGSize(width: 2, height: 2)
-			myImageView?.layer.shadowColor = UIColor.black.cgColor
-			myImageView?.layer.shadowOpacity = 0.45
-			myImageView?.layer.borderWidth = 1.5
-			myImageView?.layer.borderColor = UIColor.lightGray.cgColor
+			//Image View Setup
+			myImageView?.layer.masksToBounds = true
+			
+			myImageView?.layer.borderWidth = 3.0
+			myImageView?.layer.borderColor = UIColor.gray.cgColor
+			myImageView?.layer.cornerRadius = (myImageView?.frame.width)! / 2
+			
+			/*let borderLayer = CALayer()
+			borderLayer.frame = myImageView!.bounds
+			borderLayer.borderColor = UIColor.black.cgColor
+			borderLayer.borderWidth = 3.5
+			borderLayer.cornerRadius = borderLayer.frame.width / 2
+			myImageView?.layer.insertSublayer(borderLayer, above: myImageView?.layer)*/
+		}
+		
+		//Setup Title Label View
+		for i in 0...6
+		{
+			let myLabelView : UILabel? = titleLabelCollection?[i]
+			
+			//Title Label Setup
+			myLabelView?.layer.cornerRadius = 5
+			myLabelView?.layer.masksToBounds = true
+			//myLabelView?.layer.shadowOffset = CGSize(width: 2, height: 2)
+			//myLabelView?.layer.shadowColor = UIColor.black.cgColor
+			//myLabelView?.layer.shadowOpacity = 0.45
+			//myLabelView?.layer.borderWidth = 1.5
+			//myLabelView?.layer.borderColor = UIColor.lightGray.cgColor
 		}
 		
 		
@@ -102,11 +144,14 @@ class HomeScreen: UITableViewController
 			let myButton : UIButton? = startButtonCollection?[i]
 			
 			//Start Button Setup
-			myButton?.layer.cornerRadius = 3
+			myButton?.layer.cornerRadius = 5
 			myButton?.layer.masksToBounds = false
-			myButton?.layer.shadowOffset = CGSize(width: 2, height: 2)
+			myButton?.layer.shadowOffset = CGSize(width: 1, height: 3)
 			myButton?.layer.shadowColor = UIColor.black.cgColor
-			myButton?.layer.shadowOpacity = 0.35
+			myButton?.layer.shadowOpacity = 0.55
+			myButton?.layer.borderColor = UIColor.black.cgColor
+			myButton?.layer.borderWidth = 0.35
+			
 		}
     }
     
@@ -240,6 +285,7 @@ class HomeScreen: UITableViewController
 		
 		var minPassed = min
 		let energyMissing = 100 - energyAmount
+		print("Energy Missing: " + String(energyMissing))
 		
 		if energyAmount < 100
 		{
@@ -316,8 +362,18 @@ class HomeScreen: UITableViewController
         {
         }
     }
-    
-    
+	
+	// Cell View Setup
+	func gradient(frame:CGRect) -> CAGradientLayer
+	{
+		let layer = CAGradientLayer()
+		layer.frame = frame
+		layer.startPoint = CGPoint(x: 0, y: 0.5)
+		layer.endPoint = CGPoint(x: 1, y: 0.5)
+		layer.colors = [UIColor.gray.cgColor,UIColor.cyan.cgColor]
+		
+		return layer
+	}
     
     
     // MARK: - User Actions
