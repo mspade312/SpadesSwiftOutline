@@ -61,12 +61,15 @@ class HomeScreen: UITableViewController
 	@IBOutlet var imageViewCollection: [UIImageView]?
 
     @IBOutlet weak var coinsTotal: UILabel?
+	@IBOutlet weak var coinsView: UIView?
     @IBOutlet weak var energyTotal: UILabel?
-    
+	@IBOutlet weak var energyView: UIView?
+
     @IBOutlet weak var profileView: UIView?
     @IBOutlet weak var profileNameLabel: UILabel?
     @IBOutlet weak var profileLevelLabel: UILabel?
     @IBOutlet weak var profileAvatar: UIImageView?
+	@IBOutlet weak var settingsButton: UIButton?
 
 
     // MARK: - Methods
@@ -137,7 +140,6 @@ class HomeScreen: UITableViewController
 			//myLabelView?.layer.borderColor = UIColor.lightGray.cgColor
 		}
 		
-		
 		//Setup Card View
 		for i in 0...7
 		{
@@ -151,8 +153,27 @@ class HomeScreen: UITableViewController
 			myButton?.layer.shadowOpacity = 0.55
 			myButton?.layer.borderColor = UIColor.black.cgColor
 			myButton?.layer.borderWidth = 0.35
-			
 		}
+		//Setup Profile View
+		profileView?.layer.cornerRadius = 8
+		profileView?.layer.masksToBounds = true
+		
+		profileAvatar?.layer.cornerRadius = (profileAvatar?.frame.width)! / 2
+		profileAvatar?.layer.masksToBounds = true
+		profileAvatar?.layer.borderWidth = 1.5
+		profileAvatar?.layer.borderColor = UIColor.gray.cgColor
+		
+		//Setup Settings Button View
+		settingsButton?.layer.cornerRadius = (settingsButton?.frame.width)! / 2
+		settingsButton?.layer.masksToBounds = true
+		settingsButton?.layer.borderWidth = 3.0
+		settingsButton?.layer.borderColor = UIColor.gray.cgColor
+		
+		//Setup Coins and Energy Views
+		coinsView?.layer.cornerRadius = 8
+		coinsView?.layer.masksToBounds = true
+		energyView?.layer.cornerRadius = 8
+		energyView?.layer.masksToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool)
