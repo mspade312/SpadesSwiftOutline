@@ -79,6 +79,40 @@ class HomeScreen: UITableViewController
         super.viewDidLoad()
         profileView?.isUserInteractionEnabled = true
         
+		//Setup Cell Color Array
+		
+		//Blue Gradient
+		let colorTopBlue =  UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 0.15).cgColor
+		let colorBottomBlue = UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+		
+		//Purple Gradient
+		let colorTopPurple =  UIColor(red: 104.0/255.0, green: 60.0/255.0, blue: 158.0/255.0, alpha: 0.15).cgColor
+		let colorBottomPurple = UIColor(red: 104.0/255.0, green: 60.0/255.0, blue: 158.0/255.0, alpha: 1.0).cgColor
+		
+		//Red Gradient
+		let colorTopRed =  UIColor(red: 158.0/255.0, green: 20.0/255.0, blue: 70.0/255.0, alpha: 0.15).cgColor
+		let colorBottomRed = UIColor(red: 158.0/255.0, green: 20.0/255.0, blue: 70.0/255.0, alpha: 1.0).cgColor
+		
+		//Orange Gradient
+		let colorTopOrange =  UIColor(red: 158.0/255.0, green: 81.0/255.0, blue: 15.0/255.0, alpha: 0.15).cgColor
+		let colorBottomOrange = UIColor(red: 158.0/255.0, green: 81.0/255.0, blue: 15.0/255.0, alpha: 1.0).cgColor
+		
+		//Yellow Gradient
+		let colorTopYellow =  UIColor(red: 158.0/255.0, green: 154.0/255.0, blue: 35.0/255.0, alpha: 0.15).cgColor
+		let colorBottomYellow = UIColor(red: 158.0/255.0, green: 154.0/255.0, blue: 35.0/255.0, alpha: 1.0).cgColor
+		
+		//Green Gradient
+		let colorTopGreen =  UIColor(red: 31.0/255.0, green: 158.0/255.0, blue: 30.0/255.0, alpha: 0.15).cgColor
+		let colorBottomGreen = UIColor(red: 31.0/255.0, green: 158.0/255.0, blue: 30.0/255.0, alpha: 1.0).cgColor
+		
+		//Cyan Gradient
+		let colorTopCyan =  UIColor(red: 45.0/255.0, green: 158.0/255.0, blue: 154.0/255.0, alpha: 0.15).cgColor
+		let colorBottomCyan = UIColor(red: 45.0/255.0, green: 158.0/255.0, blue: 154.0/255.0, alpha: 1.0).cgColor
+		
+		//Gradient Color Arrays
+		let colorTopArray: [CGColor] = [colorTopBlue, colorTopPurple, colorTopRed, colorTopOrange, colorTopYellow, colorTopGreen, colorTopCyan]
+		let colorBottomArray: [CGColor] = [colorBottomBlue, colorBottomPurple, colorBottomRed, colorBottomOrange, colorBottomYellow, colorBottomGreen, colorBottomCyan]
+
 		//Setup Cell View
 		for i in 0...6
 		{
@@ -94,11 +128,9 @@ class HomeScreen: UITableViewController
 			myView?.layer.borderWidth = 0.35
 			
 			//Setup Cell Gradient
-			let colorTop =  UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 0.15).cgColor
-			let colorBottom = UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
 			let gradientLayer = CAGradientLayer()
 			
-			gradientLayer.colors = [colorTop, colorBottom]
+			gradientLayer.colors = [colorTopArray[i], colorBottomArray[i]]
 			gradientLayer.locations = [0.0, 0.50]
 			gradientLayer.frame = self.view.bounds
 			
@@ -157,23 +189,30 @@ class HomeScreen: UITableViewController
 		//Setup Profile View
 		profileView?.layer.cornerRadius = 8
 		profileView?.layer.masksToBounds = true
+		profileView?.layer.borderWidth = 1.0
+		profileView?.layer.borderColor = UIColor.gray.cgColor
 		
 		profileAvatar?.layer.cornerRadius = (profileAvatar?.frame.width)! / 2
 		profileAvatar?.layer.masksToBounds = true
-		profileAvatar?.layer.borderWidth = 1.5
+		profileAvatar?.layer.borderWidth = 1.0
 		profileAvatar?.layer.borderColor = UIColor.gray.cgColor
 		
 		//Setup Settings Button View
 		settingsButton?.layer.cornerRadius = (settingsButton?.frame.width)! / 2
 		settingsButton?.layer.masksToBounds = true
-		settingsButton?.layer.borderWidth = 3.0
+		settingsButton?.layer.borderWidth = 1.0
 		settingsButton?.layer.borderColor = UIColor.gray.cgColor
 		
 		//Setup Coins and Energy Views
 		coinsView?.layer.cornerRadius = 8
 		coinsView?.layer.masksToBounds = true
+		coinsView?.layer.borderWidth = 1.0
+		coinsView?.layer.borderColor = UIColor.gray.cgColor
+		
 		energyView?.layer.cornerRadius = 8
 		energyView?.layer.masksToBounds = true
+		energyView?.layer.borderWidth = 1.0
+		energyView?.layer.borderColor = UIColor.gray.cgColor
     }
     
     override func viewWillAppear(_ animated: Bool)
