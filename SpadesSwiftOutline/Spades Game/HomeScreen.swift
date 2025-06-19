@@ -393,30 +393,42 @@ class HomeScreen: UITableViewController
         start5?.isEnabled = false
         start6?.isEnabled = false
         start7?.isEnabled = false
+		image2?.image = UIImage(named: "padlock")
+		image3?.image = UIImage(named: "padlock")
+		image4?.image = UIImage(named: "padlock")
+		image5?.image = UIImage(named: "padlock")
+		image6?.image = UIImage(named: "padlock")
+		image7?.image = UIImage(named: "padlock")
         
         if playerLevel >= 2 && energyAmount >= 2
         {
             start2?.isEnabled = true
+			image2?.image = UIImage(named: "pic2")
         }
         else if playerLevel >= 5 && energyAmount >= 5
         {
             start3?.isEnabled = true
+			image3?.image = UIImage(named: "pic3")
         }
         else if playerLevel >= 10 && energyAmount >= 10
         {
             start4?.isEnabled = true
+			image4?.image = UIImage(named: "pic4")
         }
         else if playerLevel >= 20 && energyAmount >= 12
         {
             start5?.isEnabled = true
+			image5?.image = UIImage(named: "pic5")
         }
         else if playerLevel >= 35 && energyAmount >= 15
         {
             start6?.isEnabled = true
+			image6?.image = UIImage(named: "pic6")
         }
         else if playerLevel >= 50 && energyAmount >= 20
         {
             start7?.isEnabled = true
+			image7?.image = UIImage(named: "tournament_icon")
         }
         else
         {

@@ -17,6 +17,7 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
     // MARK: - IBOutlets
     
     @IBOutlet weak var avatarSelect: UIButton?
+	@IBOutlet weak var cancelButton: UIButton?
 	@IBOutlet weak var currentLevelLabel: UILabel?
 	@IBOutlet weak var currentXPLabel: UILabel?
     @IBOutlet weak var playerNameTextView: UITextField?
@@ -24,12 +25,47 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 	@IBOutlet weak var gamesWonLabel: UILabel?
 	@IBOutlet weak var gamesLostLabel: UILabel?
 	@IBOutlet weak var gamesTotalLabel: UILabel?
+	@IBOutlet weak var myView: UIView?
+
 
     // MARK: - Methods
 
     override func viewDidLoad()
     {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+		
+		//Set Progress Bar View
+		xpProgressBar?.progress = 0.0
+		xpProgressBar?.layer.cornerRadius = 10
+		xpProgressBar?.clipsToBounds = true
+		xpProgressBar?.layer.sublayers![1].cornerRadius = 10
+		xpProgressBar?.subviews[1].clipsToBounds = true
+		xpProgressBar?.transform = (xpProgressBar?.transform.scaledBy(x: 1, y: 8))!
+		xpProgressBar?.progressTintColor = UIColor.blue
+		xpProgressBar?.layer.borderWidth = 0.2
+		xpProgressBar?.layer.borderColor = UIColor.gray.cgColor
+		
+		//Blue Gradient
+		let colorTopBlue =  UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 0.15).cgColor
+		let colorBottomBlue = UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+		
+		//Cell View Setup
+		myView?.layer.cornerRadius = 8
+		myView?.layer.masksToBounds = true
+		myView?.layer.shadowOffset = CGSize(width: 0, height: 1)
+		myView?.layer.shadowColor = UIColor.black.cgColor
+		myView?.layer.shadowOpacity = 0.55
+		myView?.layer.borderColor = UIColor.black.cgColor
+		myView?.layer.borderWidth = 0.35
+		
+		//Setup Cell Gradient
+		let gradientLayer = CAGradientLayer()
+		
+		gradientLayer.colors = [colorTopBlue, colorBottomBlue]
+		gradientLayer.locations = [0.0, 0.50]
+		gradientLayer.frame = self.view.bounds
+		
+		myView?.layer.insertSublayer(gradientLayer, at:0)
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -72,15 +108,6 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 		{
 			currentLevelLabel?.text = "Level " + levelString!
 		}
-		
-		//Set Progress Bar View
-		xpProgressBar?.progress = 0.0
-		xpProgressBar?.layer.cornerRadius = 10
-		xpProgressBar?.clipsToBounds = true
-		xpProgressBar?.layer.sublayers![1].cornerRadius = 10
-		xpProgressBar?.subviews[1].clipsToBounds = true
-		xpProgressBar?.transform = (xpProgressBar?.transform.scaledBy(x: 1, y: 8))!
-		xpProgressBar?.progressTintColor = UIColor.blue
 		
 		//Set Max XP String
 		let nonDigits = CharacterSet.decimalDigits.inverted
@@ -139,6 +166,21 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 			let gameTotalString = gamesWonInt + gamesLostInt
 			gamesTotalLabel?.text = "Games Played : " + String(gameTotalString)
 		}
+		gamesTotalLabel?.layer.cornerRadius = 5
+		gamesTotalLabel?.layer.masksToBounds = true
+		
+		//Avatar Icon View
+		avatarSelect?.layer.masksToBounds = true
+		avatarSelect?.layer.borderWidth = 3.0
+		avatarSelect?.layer.borderColor = UIColor.gray.cgColor
+		avatarSelect?.layer.cornerRadius = (avatarSelect?.frame.width)! / 2
+		
+		//Close Button
+		cancelButton?.layer.cornerRadius = (cancelButton?.frame.width)! / 2
+		cancelButton?.layer.masksToBounds = true
+		cancelButton?.layer.borderWidth = 1.0
+		cancelButton?.layer.borderColor = UIColor.gray.cgColor
+		
         
     }
 	
