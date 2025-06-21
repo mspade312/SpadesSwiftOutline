@@ -33,6 +33,7 @@ class AvatarScreen: UITableViewController
     @IBOutlet weak var avatar18: UIButton?
     @IBOutlet weak var avatar19: UIButton?
     @IBOutlet weak var avatar20: UIButton?
+	@IBOutlet var avatarButtonCollection: [UIButton]?
 
     // MARK: - Methods
 
@@ -45,37 +46,59 @@ class AvatarScreen: UITableViewController
     {
         presentingViewController?.dismiss(animated: true)
     }
+	
+	func clearBoarders()
+	{
+		//Setup Card View
+		for i in 0...19
+		{
+			let myButton : UIButton? = avatarButtonCollection?[i]
+			
+			//Avatar Button Setup
+			myButton?.layer.cornerRadius = 5
+			myButton?.layer.masksToBounds = false
+			myButton?.layer.borderColor = UIColor.clear.cgColor
+			myButton?.layer.borderWidth = 2.0
+		}
+	}
     
     // MARK: - User Actions
     @IBAction func startSelected(sender: UIButton)
     {
-        
+		clearBoarders()
+		
         switch sender
         {
         case avatar1:
         print("Avatar 1 Selected")
             prefs.set("pic1", forKey: "avatar")
-            
+			avatar1?.layer.borderColor = UIColor.blue.cgColor
+			avatar1?.layer.borderWidth = 2.0
         case avatar2:
         print("Avatar 2 Selected")
             prefs.set("pic2", forKey: "avatar")
-
+			avatar2?.layer.borderColor = UIColor.blue.cgColor
+			avatar2?.layer.borderWidth = 2.0
         case avatar3:
         print("Avatar 3 Selected")
             prefs.set("pic3", forKey: "avatar")
-
+			avatar3?.layer.borderColor = UIColor.blue.cgColor
+			avatar3?.layer.borderWidth = 2.0
         case avatar4:
         print("Avatar 4 Selected")
             prefs.set("pic4", forKey: "avatar")
-
+			avatar4?.layer.borderColor = UIColor.blue.cgColor
+			avatar4?.layer.borderWidth = 2.0
         case avatar5:
         print("Avatar 5 Selected")
             prefs.set("pic5", forKey: "avatar")
-
+			avatar5?.layer.borderColor = UIColor.blue.cgColor
+			avatar5?.layer.borderWidth = 2.0
         case avatar6:
         print("Avatar 6 Selected")
             prefs.set("pic6", forKey: "avatar")
-
+			avatar6?.layer.borderColor = UIColor.blue.cgColor
+			avatar6?.layer.borderWidth = 2.0
         case avatar7:
         print("Avatar 7 Selected")
             

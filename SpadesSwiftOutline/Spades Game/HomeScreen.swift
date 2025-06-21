@@ -549,22 +549,12 @@ class HomeScreen: UITableViewController
     
     @IBAction func settingsSelected(sender: UIButton)
     {
-        print("Settings Button Clicked")
+        print("Profile & Settings Button Clicked")
         
-        var settingSelected = SettingScreen()
-        settingSelected = storyboard!.instantiateViewController(withIdentifier: "settingScreen") as! SettingScreen
+        var settingSelected = ProfileScreen()
+        settingSelected = storyboard!.instantiateViewController(withIdentifier: "profileScreen") as! ProfileScreen
         settingSelected.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         present(settingSelected, animated: true)
-    }
-    
-    @IBAction func profileSelected(sender: UIControl)
-    {
-        print("Profile Button Clicked")
-        
-        var profileSelected = ProfileScreen()
-        profileSelected = storyboard!.instantiateViewController(withIdentifier: "profileScreen") as! ProfileScreen
-        profileSelected.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        present(profileSelected, animated: true)
     }
     
     @IBAction func moreCoinsEnergySelected(sender: UIControl)
