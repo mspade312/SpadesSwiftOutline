@@ -34,12 +34,37 @@ class AvatarScreen: UITableViewController
     @IBOutlet weak var avatar19: UIButton?
     @IBOutlet weak var avatar20: UIButton?
 	@IBOutlet var avatarButtonCollection: [UIButton]?
+	@IBOutlet weak var cancelButton: UIButton?
 
     // MARK: - Methods
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+		
+		//Close Button
+		cancelButton?.layer.cornerRadius = (cancelButton?.frame.width)! / 2
+		cancelButton?.layer.masksToBounds = true
+		cancelButton?.layer.borderWidth = 1.0
+		cancelButton?.layer.borderColor = UIColor.gray.cgColor
+		
+		//Avatar Selected View Setup
+		let avatarInt = prefs.integer(forKey: "avatarNumber")
+
+		//Set Avatar Boarder View
+		for i in 0...19
+		{
+			if avatarInt - 1  == i
+			{
+				let myButton : UIButton? = avatarButtonCollection?[i]
+				
+				//Avatar Button Setup
+				myButton?.layer.cornerRadius = 5
+				myButton?.layer.masksToBounds = false
+				myButton?.layer.borderColor = UIColor.blue.cgColor
+				myButton?.layer.borderWidth = 2.0
+			}
+		}
     }
     
     func cancelAction()
@@ -49,7 +74,7 @@ class AvatarScreen: UITableViewController
 	
 	func clearBoarders()
 	{
-		//Setup Card View
+		//Clear Avatar Boarder View
 		for i in 0...19
 		{
 			let myButton : UIButton? = avatarButtonCollection?[i]
@@ -72,31 +97,37 @@ class AvatarScreen: UITableViewController
         case avatar1:
         print("Avatar 1 Selected")
             prefs.set("pic1", forKey: "avatar")
+			prefs.set(1, forKey: "avatarNumber")
 			avatar1?.layer.borderColor = UIColor.blue.cgColor
 			avatar1?.layer.borderWidth = 2.0
         case avatar2:
         print("Avatar 2 Selected")
             prefs.set("pic2", forKey: "avatar")
+			prefs.set(2, forKey: "avatarNumber")
 			avatar2?.layer.borderColor = UIColor.blue.cgColor
 			avatar2?.layer.borderWidth = 2.0
         case avatar3:
         print("Avatar 3 Selected")
             prefs.set("pic3", forKey: "avatar")
+			prefs.set(3, forKey: "avatarNumber")
 			avatar3?.layer.borderColor = UIColor.blue.cgColor
 			avatar3?.layer.borderWidth = 2.0
         case avatar4:
         print("Avatar 4 Selected")
             prefs.set("pic4", forKey: "avatar")
+			prefs.set(4, forKey: "avatarNumber")
 			avatar4?.layer.borderColor = UIColor.blue.cgColor
 			avatar4?.layer.borderWidth = 2.0
         case avatar5:
         print("Avatar 5 Selected")
             prefs.set("pic5", forKey: "avatar")
+			prefs.set(5, forKey: "avatarNumber")
 			avatar5?.layer.borderColor = UIColor.blue.cgColor
 			avatar5?.layer.borderWidth = 2.0
         case avatar6:
         print("Avatar 6 Selected")
             prefs.set("pic6", forKey: "avatar")
+			prefs.set(6, forKey: "avatarNumber")
 			avatar6?.layer.borderColor = UIColor.blue.cgColor
 			avatar6?.layer.borderWidth = 2.0
         case avatar7:

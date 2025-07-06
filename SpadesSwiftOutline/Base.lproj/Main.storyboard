@@ -2499,6 +2499,7 @@
                         <outlet property="avatar7" destination="VMm-qp-fYQ" id="enm-v8-OQm"/>
                         <outlet property="avatar8" destination="Pue-94-Sss" id="OG4-6k-Zms"/>
                         <outlet property="avatar9" destination="8dp-jX-9lV" id="QPe-5H-95i"/>
+                        <outlet property="cancelButton" destination="rmg-iI-QFr" id="cpS-Lu-50t"/>
                         <outletCollection property="avatarButtonCollection" destination="qY9-F6-9Kq" collectionClass="NSMutableArray" id="vs4-0W-yyi"/>
                         <outletCollection property="avatarButtonCollection" destination="43k-UM-bAu" collectionClass="NSMutableArray" id="Cyj-YM-wFW"/>
                         <outletCollection property="avatarButtonCollection" destination="EI4-Ak-sNM" collectionClass="NSMutableArray" id="qsE-Rh-DqI"/>
