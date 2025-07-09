@@ -26,6 +26,26 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 	@IBOutlet weak var gamesLostLabel: UILabel?
 	@IBOutlet weak var gamesTotalLabel: UILabel?
 	@IBOutlet weak var myView: UIView?
+	@IBOutlet weak var background1: UIButton?
+	@IBOutlet weak var background2: UIButton?
+	@IBOutlet weak var background3: UIButton?
+	@IBOutlet weak var background4: UIButton?
+	@IBOutlet weak var background5: UIButton?
+	@IBOutlet weak var background6: UIButton?
+	@IBOutlet weak var background7: UIButton?
+	@IBOutlet weak var background8: UIButton?
+	@IBOutlet weak var background9: UIButton?
+	@IBOutlet weak var background10: UIButton?
+	@IBOutlet weak var background11: UIButton?
+	@IBOutlet weak var background12: UIButton?
+	@IBOutlet var backgroundButtonCollection: [UIButton]?
+	@IBOutlet weak var wildCard1: UIView?
+	@IBOutlet weak var wildCard2: UIView?
+	@IBOutlet weak var wildCard3: UIView?
+	@IBOutlet weak var wildCard4: UIView?
+	@IBOutlet weak var wildCard5: UIView?
+	@IBOutlet weak var wildCard6: UIView?
+	@IBOutlet var wildCardButtonCollection: [UIView]?
 
 
     // MARK: - Methods
@@ -66,6 +86,41 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 		gradientLayer.frame = self.view.bounds
 		
 		myView?.layer.insertSublayer(gradientLayer, at:0)
+		
+		//Background Selected View Setup
+		let backgroundInt = prefs.integer(forKey: "backgroundNumber")
+
+		//Set Background Boarder View
+		for i in 0...11
+		{
+			if backgroundInt - 1  == i
+			{
+				let myButton : UIButton? = backgroundButtonCollection?[i]
+				
+				//Background Button Setup
+				myButton?.layer.cornerRadius = 5
+				myButton?.layer.masksToBounds = false
+				myButton?.layer.borderColor = UIColor.blue.cgColor
+				myButton?.layer.borderWidth = 2.0
+			}
+		}
+		//Wild Card Selected View Setup
+		let wildInt = prefs.integer(forKey: "wildNumber")
+
+		//Set Wild Card Boarder View
+		for i in 0...5
+		{
+			if wildInt - 1  == i
+			{
+				let myButton : UIView? = wildCardButtonCollection?[i]
+				
+				//Wild Card Button Setup
+				myButton?.layer.cornerRadius = 5
+				myButton?.layer.masksToBounds = false
+				myButton?.layer.borderColor = UIColor.blue.cgColor
+				myButton?.layer.borderWidth = 2.0
+			}
+		}
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -180,9 +235,37 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 		cancelButton?.layer.masksToBounds = true
 		cancelButton?.layer.borderWidth = 1.0
 		cancelButton?.layer.borderColor = UIColor.gray.cgColor
-		
-        
     }
+	
+	func clearBackgroundBoarders()
+	{
+		//Clear Background Boarder View
+		for i in 0...11
+		{
+			let myButton : UIButton? = backgroundButtonCollection?[i]
+			
+			//Background Button Setup
+			myButton?.layer.cornerRadius = 5
+			myButton?.layer.masksToBounds = false
+			myButton?.layer.borderColor = UIColor.clear.cgColor
+			myButton?.layer.borderWidth = 2.0
+		}
+	}
+	
+	func clearWildCardBoarders()
+	{
+		//Clear Wild Card Boarder View
+		for i in 0...5
+		{
+			let myButton : UIView? = wildCardButtonCollection?[i]
+			
+			//Wild Card Button Setup
+			myButton?.layer.cornerRadius = 5
+			myButton?.layer.masksToBounds = false
+			myButton?.layer.borderColor = UIColor.blue.cgColor
+			myButton?.layer.borderWidth = 2.0
+		}
+	}
 	
 	func saveTextName()
 	{
@@ -207,4 +290,136 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
         avatarSelected.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         present(avatarSelected, animated: true)
     }
+	
+	@IBAction func backgroundSelected(sender: UIButton)
+	{
+		clearBackgroundBoarders()
+		
+		switch sender
+		{
+		case background1:
+		print("Background 1 Selected")
+			prefs.set("landScape1", forKey: "background")
+			prefs.set(1, forKey: "backgroundNumber")
+			background1?.layer.borderColor = UIColor.blue.cgColor
+			background1?.layer.borderWidth = 2.0
+		case background2:
+		print("Background 2 Selected")
+			prefs.set("landScape2", forKey: "background")
+			prefs.set(2, forKey: "backgroundNumber")
+			background2?.layer.borderColor = UIColor.blue.cgColor
+			background2?.layer.borderWidth = 2.0
+		case background3:
+		print("Background 3 Selected")
+			prefs.set("landScape3", forKey: "background")
+			prefs.set(3, forKey: "backgroundNumber")
+			background3?.layer.borderColor = UIColor.blue.cgColor
+			background3?.layer.borderWidth = 2.0
+		case background4:
+		print("Background 4 Selected")
+			prefs.set("landScape4", forKey: "background")
+			prefs.set(4, forKey: "backgroundNumber")
+			background4?.layer.borderColor = UIColor.blue.cgColor
+			background4?.layer.borderWidth = 2.0
+		case background5:
+		print("Background 5 Selected")
+			prefs.set("landScape5", forKey: "background")
+			prefs.set(5, forKey: "backgroundNumber")
+			background5?.layer.borderColor = UIColor.blue.cgColor
+			background5?.layer.borderWidth = 2.0
+		case background6:
+		print("Background 6 Selected")
+			prefs.set("landScape6", forKey: "background")
+			prefs.set(6, forKey: "backgroundNumber")
+			background6?.layer.borderColor = UIColor.blue.cgColor
+			background6?.layer.borderWidth = 2.0
+		case background7:
+		print("Background 7 Selected")
+			prefs.set("greenFeltiPad", forKey: "background")
+			prefs.set(7, forKey: "backgroundNumber")
+			background7?.layer.borderColor = UIColor.blue.cgColor
+			background7?.layer.borderWidth = 2.0
+		case background8:
+		print("Background 8 Selected")
+			prefs.set("redFeltiPad", forKey: "background")
+			prefs.set(8, forKey: "backgroundNumber")
+			background8?.layer.borderColor = UIColor.blue.cgColor
+			background8?.layer.borderWidth = 2.0
+		case background9:
+		print("Background 9 Selected")
+			prefs.set("blueFeltiPad", forKey: "background")
+			prefs.set(9, forKey: "backgroundNumber")
+			background9?.layer.borderColor = UIColor.blue.cgColor
+			background9?.layer.borderWidth = 2.0
+		case background10:
+		print("Background 10 Selected")
+			prefs.set("aquaFeltiPad", forKey: "background")
+			prefs.set(10, forKey: "backgroundNumber")
+			background10?.layer.borderColor = UIColor.blue.cgColor
+			background10?.layer.borderWidth = 2.0
+		case background11:
+		print("Background 11 Selected")
+			prefs.set("purpleFeltiPad", forKey: "background")
+			prefs.set(11, forKey: "backgroundNumber")
+			background11?.layer.borderColor = UIColor.blue.cgColor
+			background11?.layer.borderWidth = 2.0
+		case background12:
+		print("Background 12 Selected")
+			prefs.set("yellowFeltiPad", forKey: "background")
+			prefs.set(12, forKey: "backgroundNumber")
+			background12?.layer.borderColor = UIColor.blue.cgColor
+			background12?.layer.borderWidth = 2.0
+
+		default:
+			break
+		}
+	}
+	
+	@IBAction func wildCardSelected(sender: UIButton)
+	{
+		clearWildCardBoarders()
+		
+		switch sender
+		{
+		case wildCard1:
+		print("Wild Card 1 Selected")
+			prefs.set("wildCard1", forKey: "wildCard")
+			prefs.set(1, forKey: "wildNumber")
+			wildCard1?.layer.borderColor = UIColor.blue.cgColor
+			wildCard1?.layer.borderWidth = 2.0
+		case wildCard2:
+		print("Wild Card 2 Selected")
+			prefs.set("wildCard2", forKey: "wildCard")
+			prefs.set(2, forKey: "wildNumber")
+			wildCard2?.layer.borderColor = UIColor.blue.cgColor
+			wildCard2?.layer.borderWidth = 2.0
+		case wildCard3:
+		print("Wild Card 3 Selected")
+			prefs.set("wildCard3", forKey: "wildCard")
+			prefs.set(3, forKey: "wildNumber")
+			wildCard3?.layer.borderColor = UIColor.blue.cgColor
+			wildCard3?.layer.borderWidth = 2.0
+		case wildCard4:
+		print("Wild Card 4 Selected")
+			prefs.set("wildCard4", forKey: "wildCard")
+			prefs.set(4, forKey: "wildNumber")
+			wildCard4?.layer.borderColor = UIColor.blue.cgColor
+			wildCard4?.layer.borderWidth = 2.0
+		case wildCard5:
+		print("Wild Card 5 Selected")
+			prefs.set("wildCard5", forKey: "wildCard")
+			prefs.set(5, forKey: "wildNumber")
+			wildCard5?.layer.borderColor = UIColor.blue.cgColor
+			wildCard5?.layer.borderWidth = 2.0
+		case wildCard6:
+		print("Wild Card 6 Selected")
+			prefs.set("wildCard6", forKey: "wildCard")
+			prefs.set(6, forKey: "wildNumber")
+			wildCard6?.layer.borderColor = UIColor.blue.cgColor
+			wildCard6?.layer.borderWidth = 2.0
+			
+		default:
+			break
+		}
+	}
 }

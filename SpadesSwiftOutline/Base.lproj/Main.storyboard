@@ -130,7 +130,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-e3-jm9">
                                 <rect key="frame" x="20" y="43" width="44" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="baseline_close_white_48dp"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="baseline_close_white_48dp" symbolScale="large"/>
+                                </state>
                                 <connections>
                                     <action selector="quitButton:" destination="xTx-AZ-V2j" eventType="touchDown" id="6rQ-0n-loi"/>
                                 </connections>
@@ -463,7 +465,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-Ot-FRr">
                                     <rect key="frame" x="294" y="17" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="baseline_close_white_48dp"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="baseline_close_white_48dp" symbolScale="large"/>
+                                    </state>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36Q-G7-pkh">
                                     <rect key="frame" x="256" y="65" width="71" height="26"/>
@@ -1439,9 +1443,10 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <size key="titleShadowOffset" width="1" height="2"/>
-                                    <state key="normal" image="baseline_close_white_48dp">
+                                    <state key="normal">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <imageReference key="image" image="baseline_close_white_48dp" symbolScale="large"/>
                                     </state>
                                     <connections>
                                         <action selector="cancel:" destination="wwT-qw-buX" eventType="touchDown" id="cAl-oO-rrU"/>
@@ -2180,6 +2185,18 @@
                     <navigationItem key="navigationItem" id="gAL-qK-Tj1"/>
                     <connections>
                         <outlet property="avatarSelect" destination="VTu-JJ-k3u" id="S65-Ky-xNV"/>
+                        <outlet property="background1" destination="WvN-GY-9Hp" id="D4l-n5-zsq"/>
+                        <outlet property="background10" destination="64T-hb-qlL" id="I1j-Xe-aJI"/>
+                        <outlet property="background11" destination="aZR-fB-wg8" id="2d5-ab-dXe"/>
+                        <outlet property="background12" destination="nt9-04-STj" id="fLY-jV-cqE"/>
+                        <outlet property="background2" destination="nfj-Kt-4AG" id="QEc-Bl-Jbz"/>
+                        <outlet property="background3" destination="IeV-Yj-oZa" id="fjL-lt-NuU"/>
+                        <outlet property="background4" destination="O7Y-2A-OQb" id="E9f-Cl-fvi"/>
+                        <outlet property="background5" destination="CUb-dY-nye" id="Syk-lm-lzs"/>
+                        <outlet property="background6" destination="3rS-Ab-gVt" id="OMO-nJ-6lq"/>
+                        <outlet property="background7" destination="y1W-zf-OaY" id="pDY-tu-QPq"/>
+                        <outlet property="background8" destination="FWs-dp-6BL" id="OAO-6r-zED"/>
+                        <outlet property="background9" destination="ICN-oe-Cx2" id="iJB-uX-Xq3"/>
                         <outlet property="cancelButton" destination="FWl-wa-ouh" id="ByG-JY-REq"/>
                         <outlet property="currentLevelLabel" destination="HNB-ze-C6a" id="3h1-Kn-DVw"/>
                         <outlet property="currentXPLabel" destination="dWg-lV-t6B" id="SGD-NN-ddZ"/>
@@ -2188,7 +2205,31 @@
                         <outlet property="gamesWonLabel" destination="n6o-1P-JFZ" id="kEW-se-FUQ"/>
                         <outlet property="myView" destination="VIb-vU-yei" id="5Ws-wI-q6Q"/>
                         <outlet property="playerNameTextView" destination="dYW-6C-XPZ" id="qTs-Mb-JP3"/>
+                        <outlet property="wildCard1" destination="GcP-V9-2A6" id="qc3-zC-0Th"/>
+                        <outlet property="wildCard2" destination="Exg-MG-cff" id="HF5-gy-gGJ"/>
+                        <outlet property="wildCard3" destination="B1y-0O-3Zs" id="eig-ks-PBH"/>
+                        <outlet property="wildCard4" destination="Vet-TD-msf" id="yhd-9I-5bo"/>
+                        <outlet property="wildCard5" destination="97m-L0-6NB" id="ae3-So-cAU"/>
+                        <outlet property="wildCard6" destination="6oU-H7-QFm" id="KdY-9y-ZCc"/>
                         <outlet property="xpProgressBar" destination="mG7-yZ-CYt" id="uY9-XF-SC7"/>
+                        <outletCollection property="backgroundButtonCollection" destination="WvN-GY-9Hp" collectionClass="NSMutableArray" id="Mq6-aG-H6X"/>
+                        <outletCollection property="backgroundButtonCollection" destination="nfj-Kt-4AG" collectionClass="NSMutableArray" id="7Pd-SA-6zO"/>
+                        <outletCollection property="backgroundButtonCollection" destination="IeV-Yj-oZa" collectionClass="NSMutableArray" id="6h1-IO-HvW"/>
+                        <outletCollection property="backgroundButtonCollection" destination="O7Y-2A-OQb" collectionClass="NSMutableArray" id="3PH-u4-Iko"/>
+                        <outletCollection property="backgroundButtonCollection" destination="CUb-dY-nye" collectionClass="NSMutableArray" id="73R-8k-NOi"/>
+                        <outletCollection property="backgroundButtonCollection" destination="3rS-Ab-gVt" collectionClass="NSMutableArray" id="C8N-vI-xId"/>
+                        <outletCollection property="backgroundButtonCollection" destination="y1W-zf-OaY" collectionClass="NSMutableArray" id="N0Q-uj-e6i"/>
+                        <outletCollection property="backgroundButtonCollection" destination="FWs-dp-6BL" collectionClass="NSMutableArray" id="3u6-0u-3RB"/>
+                        <outletCollection property="backgroundButtonCollection" destination="ICN-oe-Cx2" collectionClass="NSMutableArray" id="VUC-o9-uc8"/>
+                        <outletCollection property="backgroundButtonCollection" destination="64T-hb-qlL" collectionClass="NSMutableArray" id="bhC-aR-oxg"/>
+                        <outletCollection property="backgroundButtonCollection" destination="aZR-fB-wg8" collectionClass="NSMutableArray" id="Ldt-UJ-c6Q"/>
+                        <outletCollection property="backgroundButtonCollection" destination="nt9-04-STj" collectionClass="NSMutableArray" id="pZ8-7I-LEs"/>
+                        <outletCollection property="wildCardButtonCollection" destination="GcP-V9-2A6" collectionClass="NSMutableArray" id="dFg-Gu-aZQ"/>
+                        <outletCollection property="wildCardButtonCollection" destination="Exg-MG-cff" collectionClass="NSMutableArray" id="QeI-gx-LeS"/>
+                        <outletCollection property="wildCardButtonCollection" destination="B1y-0O-3Zs" collectionClass="NSMutableArray" id="atT-0f-1qT"/>
+                        <outletCollection property="wildCardButtonCollection" destination="Vet-TD-msf" collectionClass="NSMutableArray" id="N3V-Nc-WUg"/>
+                        <outletCollection property="wildCardButtonCollection" destination="97m-L0-6NB" collectionClass="NSMutableArray" id="EJv-y0-URa"/>
+                        <outletCollection property="wildCardButtonCollection" destination="6oU-H7-QFm" collectionClass="NSMutableArray" id="5Rd-mE-Pvv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nN-Vp-tZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
