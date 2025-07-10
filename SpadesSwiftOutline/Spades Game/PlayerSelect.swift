@@ -27,6 +27,30 @@ class PlayerSelect: UITableViewController
     @IBOutlet weak var loseLabel5: UILabel?
     @IBOutlet weak var winLabel6: UILabel?
     @IBOutlet weak var loseLabel6: UILabel?
+	
+	@IBOutlet weak var view1: UIView?
+	@IBOutlet weak var view2: UIView?
+	@IBOutlet weak var view3: UIView?
+	@IBOutlet weak var view4: UIView?
+	@IBOutlet weak var view5: UIView?
+	@IBOutlet weak var view6: UIView?
+	@IBOutlet var cellViewCollection: [UIView]?
+	
+	@IBOutlet weak var label1: UILabel?
+	@IBOutlet weak var label2: UILabel?
+	@IBOutlet weak var label3: UILabel?
+	@IBOutlet weak var label4: UILabel?
+	@IBOutlet weak var label5: UILabel?
+	@IBOutlet weak var label6: UILabel?
+	@IBOutlet var titleLabelCollection: [UILabel]?
+	
+	@IBOutlet weak var image1: UIImageView?
+	@IBOutlet weak var image2: UIImageView?
+	@IBOutlet weak var image3: UIImageView?
+	@IBOutlet weak var image4: UIImageView?
+	@IBOutlet weak var image5: UIImageView?
+	@IBOutlet weak var image6: UIImageView?
+	@IBOutlet var imageViewCollection: [UIImageView]?
 
  
     // MARK: - Methods
@@ -34,6 +58,87 @@ class PlayerSelect: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+		
+		//Setup Cell Color Array
+		
+		//Blue Gradient
+		let colorTopBlue =  UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 0.15).cgColor
+		let colorBottomBlue = UIColor(red: 60.0/255.0, green: 165.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+		
+		//Purple Gradient
+		let colorTopPurple =  UIColor(red: 104.0/255.0, green: 60.0/255.0, blue: 158.0/255.0, alpha: 0.15).cgColor
+		let colorBottomPurple = UIColor(red: 104.0/255.0, green: 60.0/255.0, blue: 158.0/255.0, alpha: 1.0).cgColor
+		
+		//Red Gradient
+		let colorTopRed =  UIColor(red: 158.0/255.0, green: 20.0/255.0, blue: 70.0/255.0, alpha: 0.15).cgColor
+		let colorBottomRed = UIColor(red: 158.0/255.0, green: 20.0/255.0, blue: 70.0/255.0, alpha: 1.0).cgColor
+		
+		//Orange Gradient
+		let colorTopOrange =  UIColor(red: 158.0/255.0, green: 81.0/255.0, blue: 15.0/255.0, alpha: 0.15).cgColor
+		let colorBottomOrange = UIColor(red: 158.0/255.0, green: 81.0/255.0, blue: 15.0/255.0, alpha: 1.0).cgColor
+		
+		//Yellow Gradient
+		let colorTopYellow =  UIColor(red: 158.0/255.0, green: 154.0/255.0, blue: 35.0/255.0, alpha: 0.15).cgColor
+		let colorBottomYellow = UIColor(red: 158.0/255.0, green: 154.0/255.0, blue: 35.0/255.0, alpha: 1.0).cgColor
+		
+		//Green Gradient
+		let colorTopGreen =  UIColor(red: 31.0/255.0, green: 158.0/255.0, blue: 30.0/255.0, alpha: 0.15).cgColor
+		let colorBottomGreen = UIColor(red: 31.0/255.0, green: 158.0/255.0, blue: 30.0/255.0, alpha: 1.0).cgColor
+		
+		//Cyan Gradient
+		let colorTopCyan =  UIColor(red: 45.0/255.0, green: 158.0/255.0, blue: 154.0/255.0, alpha: 0.15).cgColor
+		let colorBottomCyan = UIColor(red: 45.0/255.0, green: 158.0/255.0, blue: 154.0/255.0, alpha: 1.0).cgColor
+		
+		//Gradient Color Arrays
+		let colorTopArray: [CGColor] = [colorTopBlue, colorTopPurple, colorTopRed, colorTopOrange, colorTopYellow, colorTopGreen, colorTopCyan]
+		let colorBottomArray: [CGColor] = [colorBottomBlue, colorBottomPurple, colorBottomRed, colorBottomOrange, colorBottomYellow, colorBottomGreen, colorBottomCyan]
+
+		//Setup Cell View
+		for i in 0...5
+		{
+			let myView : UIView? = cellViewCollection?[i]
+			
+			//Cell View Setup
+			myView?.layer.cornerRadius = 8
+			myView?.layer.masksToBounds = true
+			myView?.layer.shadowOffset = CGSize(width: 0, height: 1)
+			myView?.layer.shadowColor = UIColor.black.cgColor
+			myView?.layer.shadowOpacity = 0.55
+			myView?.layer.borderColor = UIColor.black.cgColor
+			myView?.layer.borderWidth = 0.35
+			
+			//Setup Cell Gradient
+			let gradientLayer = CAGradientLayer()
+			
+			gradientLayer.colors = [colorTopArray[i], colorBottomArray[i]]
+			gradientLayer.locations = [0.0, 0.50]
+			gradientLayer.frame = self.view.bounds
+			
+			myView?.layer.insertSublayer(gradientLayer, at:0)
+		}
+		
+		//Setup Image View
+		for i in 0...5
+		{
+			let myImageView : UIImageView? = imageViewCollection?[i]
+			
+			//Image View Setup
+			myImageView?.layer.masksToBounds = true
+			
+			myImageView?.layer.borderWidth = 3.0
+			myImageView?.layer.borderColor = UIColor.gray.cgColor
+			myImageView?.layer.cornerRadius = (myImageView?.frame.width)! / 2
+		}
+		
+		//Setup Title Label View
+		for i in 0...5
+		{
+			let myLabelView : UILabel? = titleLabelCollection?[i]
+			
+			//Title Label Setup
+			myLabelView?.layer.cornerRadius = 5
+			myLabelView?.layer.masksToBounds = true
+		}
     }
     
     override func viewWillAppear(_ animated: Bool)

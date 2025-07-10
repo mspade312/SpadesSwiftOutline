@@ -262,7 +262,7 @@ class ProfileScreen: UITableViewController, UITextFieldDelegate
 			//Wild Card Button Setup
 			myButton?.layer.cornerRadius = 5
 			myButton?.layer.masksToBounds = false
-			myButton?.layer.borderColor = UIColor.blue.cgColor
+			myButton?.layer.borderColor = UIColor.clear.cgColor
 			myButton?.layer.borderWidth = 2.0
 		}
 	}
