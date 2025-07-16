@@ -46,6 +46,9 @@ class GameScreen: UIViewController {
     var button13String: String = ""
 	
 	var startingSuit: String?
+	var profileNameString: String = " "
+	var avatarNameString: String = " "
+	var backgroundNameString: String = " "
 
 	var leftGoingOrder: Int = 0
 	var topGoingOrder: Int = 0
@@ -131,6 +134,10 @@ class GameScreen: UIViewController {
 	@IBOutlet weak var card13: UIButton?
 	@IBOutlet var cardButtonCollection: [UIButton]?
 	
+	@IBOutlet weak var infoButton: UIButton?
+	@IBOutlet weak var cancelButton: UIButton?
+	@IBOutlet weak var gameOverButton: UIButton?
+
 	@IBOutlet var leftCardPlayed: UIImageView?
 	@IBOutlet var topCardPlayed: UIImageView?
 	@IBOutlet var rightCardPlayed: UIImageView?
@@ -140,8 +147,10 @@ class GameScreen: UIViewController {
 	@IBOutlet weak var player1: UIImageView?
 	@IBOutlet weak var player2: UIImageView?
 	@IBOutlet weak var player3: UIImageView?
+	@IBOutlet weak var player4: UIImageView?
 	@IBOutlet var backgroundImage: UIImageView?
-	
+	@IBOutlet var imageViewCollection: [UIImageView]?
+
 	@IBOutlet weak var score1Label: UILabel?
 	@IBOutlet weak var score2Label: UILabel?
 	@IBOutlet weak var gameOverLabel: UILabel?
@@ -152,11 +161,13 @@ class GameScreen: UIViewController {
 	@IBOutlet weak var playerNameLabel1: UILabel?
 	@IBOutlet weak var playerNameLabel2: UILabel?
 	@IBOutlet weak var playerNameLabel3: UILabel?
+	@IBOutlet weak var playerNameLabel4: UILabel?
 	@IBOutlet weak var xpBonusLabel: UILabel?
 	@IBOutlet weak var coinBonusLabel: UILabel?
 	@IBOutlet weak var coinTotalLabel: UILabel?
 	@IBOutlet weak var xpTotalLabel: UILabel?
-	    
+	@IBOutlet var titleLabelCollection: [UILabel]?
+
     @IBOutlet weak var gameOverView: UIView?
 
 	
@@ -166,6 +177,56 @@ class GameScreen: UIViewController {
 	{
 		super.viewDidLoad()
 		print("View Did Load")
+		
+		//Setup Image View
+		for i in 0...3
+		{
+			let myImageView : UIImageView? = imageViewCollection?[i]
+			
+			//Image View Setup
+			myImageView?.layer.masksToBounds = true
+			
+			myImageView?.layer.borderWidth = 3.0
+			myImageView?.layer.borderColor = UIColor.gray.cgColor
+			myImageView?.layer.cornerRadius = (myImageView?.frame.width)! / 2
+		}
+		
+		//Setup Title Label View
+		for i in 0...3
+		{
+			let myLabelView : UILabel? = titleLabelCollection?[i]
+			
+			//Title Label Setup
+			myLabelView?.layer.cornerRadius = 5
+			myLabelView?.layer.masksToBounds = true
+		}
+		
+		//Setup Info Button View
+		infoButton?.layer.cornerRadius = (infoButton?.frame.width)! / 2
+		infoButton?.layer.masksToBounds = true
+		infoButton?.layer.borderWidth = 1.0
+		infoButton?.layer.borderColor = UIColor.gray.cgColor
+		
+		//Setup Cancel Button View
+		cancelButton?.layer.cornerRadius = (cancelButton?.frame.width)! / 2
+		cancelButton?.layer.masksToBounds = true
+		cancelButton?.layer.borderWidth = 1.0
+		cancelButton?.layer.borderColor = UIColor.gray.cgColor
+		
+		//Game Over Button Setup
+		gameOverButton?.layer.cornerRadius = 5
+		gameOverButton?.layer.masksToBounds = false
+		gameOverButton?.layer.shadowOffset = CGSize(width: 1, height: 3)
+		gameOverButton?.layer.shadowColor = UIColor.black.cgColor
+		gameOverButton?.layer.shadowOpacity = 0.55
+		gameOverButton?.layer.borderColor = UIColor.black.cgColor
+		gameOverButton?.layer.borderWidth = 0.35
+		
+		//Setup Game Over View
+		gameOverView?.layer.cornerRadius = 8
+		gameOverView?.layer.masksToBounds = true
+		gameOverView?.layer.borderWidth = 1.0
+		gameOverView?.layer.borderColor = UIColor.black.cgColor
 	}
 	
 	override func viewWillAppear(_ animated: Bool)
@@ -236,7 +297,32 @@ class GameScreen: UIViewController {
 		
         //Hide Game Over Screen
         gameOverView?.isHidden = true
+		
+		//Setup User Name
+		let nameString = prefs.string(forKey: "profileName")
+		if nameString == nil
+		{
+			profileNameString = "New Player"
+		}
+		else
+		{
+			profileNameString = nameString!
+		}
+		playerNameLabel4?.text = profileNameString
         
+		//Setup User Image
+		let avatarString = prefs.string(forKey: "avatar")
+		if avatarString == nil
+		{
+			avatarNameString = "pic3"
+		}
+		else
+		{
+			avatarNameString = avatarString!
+		}
+		let avatarImage = UIImage(named: avatarNameString)
+		player4?.image = avatarImage
+		
 		//Start Partner Setup
 		partnerSetup()
 	}
